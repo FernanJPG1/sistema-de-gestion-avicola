@@ -1,0 +1,152 @@
+:root {
+  /* =========================================================
+     SIGA ENTERPRISE - HYPER-MODERN AGRI-TECH DESIGN SYSTEM
+     Ultra-Premium Executive Aesthetics (Default: Cyber-Obsidian Pro)
+     ========================================================= */
+  
+  /* Brand Palette: High-Tech Emerald & Solar Amber */
+  --siga-green-primary: #10B981;
+  --siga-green-dark: #059669;
+  --siga-green-light: #34D399;
+  --siga-green-neon: #6EE7B7;
+  --siga-green-soft: rgba(16, 185, 129, 0.12);
+  --siga-green-border: rgba(16, 185, 129, 0.28);
+  --siga-green-glow: 0 0 24px rgba(16, 185, 129, 0.28);
+
+  --siga-gold-primary: #F59E0B;
+  --siga-gold-dark: #D97706;
+  --siga-gold-light: #FBBF24;
+  --siga-gold-soft: rgba(245, 158, 11, 0.12);
+  --siga-gold-border: rgba(245, 158, 11, 0.32);
+  --siga-gold-glow: 0 0 24px rgba(245, 158, 11, 0.28);
+
+  --siga-cyan-primary: #06B6D4;
+  --siga-cyan-soft: rgba(6, 182, 212, 0.12);
+  --siga-cyan-border: rgba(6, 182, 212, 0.3);
+
+  --siga-terracotta: #F43F5E;
+  --siga-terracotta-soft: rgba(244, 63, 94, 0.12);
+  --siga-terracotta-border: rgba(244, 63, 94, 0.3);
+  --siga-terracotta-glow: 0 0 20px rgba(244, 63, 94, 0.25);
+
+  --siga-blue-telemetry: #3B82F6;
+  --siga-blue-soft: rgba(59, 130, 246, 0.12);
+  --siga-blue-border: rgba(59, 130, 246, 0.3);
+
+  /* Deep Space Obsidian Base Theme (Default WOW Dark Mode) */
+  --bg-app: #080C11;
+  --bg-app-gradient: radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.07) 0%, transparent 40%),
+                     radial-gradient(circle at 85% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
+                     radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.03) 0%, transparent 60%),
+                     #080C11;
+
+  --bg-sidebar: rgba(11, 17, 25, 0.94);
+  --bg-sidebar-hover: rgba(255, 255, 255, 0.04);
+  --bg-sidebar-active: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.05));
+  --text-sidebar: #94A3B8;
+  --text-sidebar-active: #FFFFFF;
+  --border-sidebar: rgba(255, 255, 255, 0.07);
+
+  --bg-topbar: rgba(11, 17, 25, 0.82);
+  --bg-card: rgba(15, 23, 36, 0.72);
+  --bg-card-hover: rgba(22, 33, 50, 0.85);
+  --bg-surface: rgba(22, 32, 48, 0.6);
+  --bg-input: rgba(11, 17, 25, 0.8);
+  --bg-glass: rgba(15, 23, 36, 0.65);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: #10B981;
+  --border-divider: rgba(255, 255, 255, 0.05);
+
+  --text-main: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-inverse: #080C11;
+
+  /* Typography */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+
+  /* Layout Dimensions */
+  --sidebar-width: 270px;
+  --topbar-height: 72px;
+
+  /* Radii */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* Elevation & Glow Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 8px 24px -4px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-subtle);
+  --shadow-card-hover: 0 16px 36px -6px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(16, 185, 129, 0.35), var(--siga-green-glow);
+  --shadow-dropdown: 0 20px 40px -8px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  /* Transitions */
+  --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* =========================================================
+   APPLE STUDIO PRO - LIGHT MODE ALTERNATIVE
+   ========================================================= */
+[data-theme="light"] {
+  --siga-green-primary: #059669;
+  --siga-green-dark: #047857;
+  --siga-green-light: #10B981;
+  --siga-green-soft: #ECFDF5;
+  --siga-green-border: #A7F3D0;
+  --siga-green-glow: 0 0 20px rgba(5, 150, 105, 0.2);
+
+  --siga-gold-primary: #D97706;
+  --siga-gold-dark: #B45309;
+  --siga-gold-light: #F59E0B;
+  --siga-gold-soft: #FFFBEB;
+  --siga-gold-border: #FDE68A;
+  --siga-gold-glow: 0 0 20px rgba(217, 119, 6, 0.2);
+
+  --siga-terracotta: #E11D48;
+  --siga-terracotta-soft: #FFF1F2;
+  --siga-terracotta-border: #FECDD3;
+
+  --siga-blue-telemetry: #2563EB;
+  --siga-blue-soft: #EFF6FF;
+  --siga-blue-border: #BFDBFE;
+
+  --bg-app: #F8FAFC;
+  --bg-app-gradient: radial-gradient(circle at 10% 10%, rgba(5, 150, 105, 0.05) 0%, transparent 40%),
+                     radial-gradient(circle at 90% 90%, rgba(217, 119, 6, 0.04) 0%, transparent 40%),
+                     #F8FAFC;
+
+  --bg-sidebar: #0F172A;
+  --bg-sidebar-hover: rgba(255, 255, 255, 0.06);
+  --bg-sidebar-active: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(16, 185, 129, 0.08));
+  --text-sidebar: #94A3B8;
+  --text-sidebar-active: #FFFFFF;
+  --border-sidebar: #1E293B;
+
+  --bg-topbar: rgba(255, 255, 255, 0.88);
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F8FAFC;
+  --bg-surface: #F1F5F9;
+  --bg-input: #FFFFFF;
+  --bg-glass: rgba(255, 255, 255, 0.8);
+
+  --border-subtle: #E2E8F0;
+  --border-focus: #059669;
+  --border-divider: #F1F5F9;
+
+  --text-main: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-inverse: #FFFFFF;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 4px 12px -2px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.8);
+  --shadow-card-hover: 0 12px 28px -4px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(5, 150, 105, 0.3);
+  --shadow-dropdown: 0 16px 36px -6px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}

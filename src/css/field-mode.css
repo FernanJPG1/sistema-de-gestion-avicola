@@ -1,0 +1,268 @@
+/* =========================================================
+   MODO CAMPO TÁCTIL (CYBER-TACTICAL FIELD MODE)
+   Optimizado para operarios en galpón, pantallas táctiles y guantes
+   ========================================================= */
+
+.field-mode-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.field-banner {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--siga-green-primary);
+  border-radius: var(--radius-lg);
+  padding: 20px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-card);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.field-banner-info h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.field-banner-info p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.field-storage-badge {
+  background: var(--siga-green-soft);
+  border: 1px solid var(--siga-green-border);
+  color: var(--siga-green-light);
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.15);
+  transition: var(--transition-smooth);
+}
+
+.field-storage-badge:hover {
+  background: rgba(16, 185, 129, 0.22);
+  transform: translateY(-1px);
+}
+
+.field-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+}
+
+/* Selector Rápido de Galpón (Botones Táctiles) */
+.quick-galpon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.quick-galpon-btn {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  user-select: none;
+}
+
+.quick-galpon-btn:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.quick-galpon-btn.active {
+  border-color: var(--siga-green-primary);
+  background: var(--siga-green-soft);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+  transform: translateY(-2px);
+}
+
+.quick-galpon-btn .galpon-name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.quick-galpon-btn .galpon-batch {
+  font-size: 0.72rem;
+  color: var(--siga-gold-light);
+  font-weight: 700;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+}
+
+/* Categorías de Entrada Rápida */
+.input-category-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.category-tab {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.category-tab:hover {
+  background: var(--bg-card-hover);
+  color: #FFFFFF;
+}
+
+.category-tab.active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.08));
+  border-color: var(--siga-green-primary);
+  color: #FFFFFF;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+}
+
+/* Numpad Táctil Gigante & LCD Display */
+.numpad-container {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 26px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .numpad-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.numpad-display-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.numpad-field-label {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--siga-gold-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.numpad-value-preview {
+  font-size: 4rem;
+  font-weight: 900;
+  font-family: var(--font-mono);
+  color: var(--siga-green-light);
+  text-shadow: 0 0 24px rgba(16, 185, 129, 0.45);
+  text-align: right;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin: 12px 0;
+}
+
+.numpad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.numpad-key {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  color: var(--text-main);
+  font-size: 1.75rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  padding: 16px 10px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease;
+  user-select: none;
+}
+
+.numpad-key:active {
+  transform: scale(0.94);
+  background: var(--siga-green-soft);
+  border-color: var(--siga-green-primary);
+}
+
+.numpad-key.key-action {
+  background: rgba(244, 63, 94, 0.12);
+  border-color: rgba(244, 63, 94, 0.3);
+  color: #FB7185;
+  font-size: 1.3rem;
+}
+
+.numpad-key.key-action:active {
+  background: rgba(244, 63, 94, 0.25);
+  border-color: var(--siga-terracotta);
+}
+
+.numpad-key.key-confirm {
+  background: linear-gradient(135deg, var(--siga-green-primary), var(--siga-green-dark));
+  border: none;
+  color: #FFFFFF;
+  grid-column: span 3;
+  padding: 18px;
+  font-size: 1.1rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.8px;
+  font-weight: 800;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+  transition: var(--transition-smooth);
+}
+
+.numpad-key.key-confirm:hover {
+  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.6);
+  transform: translateY(-1px);
+}
+
+.numpad-key.key-confirm:active {
+  transform: scale(0.98);
+}

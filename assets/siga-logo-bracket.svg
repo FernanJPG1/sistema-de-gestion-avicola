@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 140" width="100%" height="100%">
+  <!-- SIGA BRACKET LOGO (Concepto Sintético Tech: < [ ] ) -->
+  <defs>
+    <style>
+      .brand-green { fill: #4A7259; }
+      .brand-gold { fill: #D4A359; }
+      .brand-dark { fill: #282828; }
+      .brand-stroke-green { stroke: #4A7259; stroke-width: 6; stroke-linecap: square; stroke-linejoin: miter; fill: none; }
+      .brand-stroke-gold { stroke: #D4A359; stroke-width: 6; stroke-linecap: square; stroke-linejoin: miter; fill: none; }
+    </style>
+  </defs>
+
+  <!-- ISOTIPO BRACKET SINTÉTICO (< [ ] ) -->
+  <g transform="translate(18, 12)">
+    <!-- Cresta Geométrica (3 dientes tipo corchete) -->
+    <path d="M 44,24 L 44,12 L 52,12 L 52,24 L 60,12 L 60,24 L 68,12 L 68,24" stroke="#4A7259" stroke-width="5" stroke-linecap="square" fill="none" />
+
+    <!-- Cabeza y Cuello (Bracket Superior) -->
+    <path d="M 44,24 L 72,24 L 78,44" stroke="#4A7259" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" fill="none" />
+
+    <!-- PICO: Carácter Angular "<" -->
+    <path d="M 44,32 L 24,42 L 44,52" stroke="#D4A359" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter" fill="none" />
+
+    <!-- Ojo Punto Digital -->
+    <circle cx="56" cy="36" r="3.5" fill="#4A7259" />
+
+    <!-- Pecho: Corchete Frontal "[" -->
+    <path d="M 52,48 L 42,48 L 42,86 L 56,86" stroke="#4A7259" stroke-width="6.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" />
+
+    <!-- Ala Interna Dorada (Bloque Geométrico) -->
+    <polygon points="56,52 82,52 68,78 56,78" fill="#D4A359" />
+
+    <!-- Cola: Corchetes Posteriores "]" -->
+    <path d="M 80,48 L 94,48 L 94,76 L 82,76" stroke="#4A7259" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" fill="none" />
+    <path d="M 94,56 L 106,56 L 106,70 L 94,70" stroke="#D4A359" stroke-width="4.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" />
+
+    <!-- Base y Pata Tech -->
+    <path d="M 46,90 L 64,102 L 82,90" stroke="#4A7259" stroke-width="5.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" />
+    <line x1="64" y1="102" x2="64" y2="114" stroke="#4A7259" stroke-width="6" stroke-linecap="square" />
+  </g>
+
+  <!-- TIPOGRAFÍA / LOGOTIPO CORPORATIVO -->
+  <g transform="translate(160, 24)">
+    <!-- SIGA Wordmark -->
+    <text x="0" y="58" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="62" font-weight="900" letter-spacing="-1.5" fill="#282828">
+      S<tspan fill="#4A7259">I</tspan>G<tspan fill="#D4A359">A</tspan>
+    </text>
+
+    <!-- Subtítulo -->
+    <text x="4" y="86" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="700" letter-spacing="2" fill="#58675E">
+      SISTEMA INTEGRADO DE GESTIÓN AVÍCOLA
+    </text>
+
+    <!-- Indicador Tech Sintético -->
+    <text x="3" y="104" font-family="'JetBrains Mono', 'Consolas', monospace" font-size="11" font-weight="600" letter-spacing="3" fill="#D4A359">
+      &lt;[ TECH &amp; POULTRY ]&gt;
+    </text>
+  </g>
+</svg>

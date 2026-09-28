@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIGA - Brand Identity & Logo Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-green-primary: #4A7259;
+      --color-green-dark: #3A5C47;
+      --color-green-light: #5B8A6E;
+      --color-green-soft: #E2EEE6;
+      --color-gold: #D4A359;
+      --color-earth: #8A4917;
+      --color-terracotta: #B44B3E;
+      --color-graphite: #282828;
+      --color-bg: #0C110E;
+      --color-card-dark: #141B17;
+      --color-card-border: #222E27;
+      --color-text-main: #F1F5F3;
+      --color-text-muted: #8E9F96;
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--color-bg);
+      color: var(--color-text-main);
+      line-height: 1.6;
+      padding: 40px 24px;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(74, 114, 89, 0.2);
+      border: 1px solid var(--color-green-primary);
+      color: #79D19E;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .badge-highlight {
+      background: rgba(212, 163, 89, 0.2);
+      border-color: var(--color-gold);
+      color: #F0CA86;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #A5C8B4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      font-size: 1.15rem;
+      color: var(--color-text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title code {
+      font-family: var(--font-mono);
+      background: #1C2621;
+      padding: 4px 10px;
+      border-radius: 8px;
+      color: var(--color-gold);
+      border: 1px solid #2F3E35;
+    }
+
+    /* Grid de logos */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 28px;
+      margin-bottom: 50px;
+    }
+
+    .card {
+      background: var(--color-card-dark);
+      border: 1px solid var(--color-card-border);
+      border-radius: 20px;
+      padding: 26px;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card.featured {
+      border-color: var(--color-gold);
+      box-shadow: 0 0 24px rgba(212, 163, 89, 0.12);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-green-primary);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+
+    .preview-box {
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 250px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preview-box.light {
+      background: #FFFFFF;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+    }
+
+    .preview-box.dark {
+      background: #0A0F0C;
+      border: 1px solid #1C2B23;
+    }
+
+    .preview-box img {
+      max-width: 100%;
+      max-height: 220px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .preview-box svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--color-text-muted);
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex: 1;
+    }
+
+    .btn-primary {
+      background: var(--color-green-primary);
+      color: #FFFFFF;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-green-light);
+    }
+
+    .btn-gold {
+      background: var(--color-gold);
+      color: #1A1305;
+      border: none;
+    }
+
+    .btn-gold:hover {
+      background: #E5B56C;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-text-main);
+      border: 1px solid var(--color-card-border);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--color-green-primary);
+    }
+
+    /* Explanation Banner */
+    .concept-banner {
+      background: linear-gradient(135deg, #18231C 0%, #121915 100%);
+      border: 1px solid #28392F;
+      border-radius: 18px;
+      padding: 24px 30px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .concept-banner-glyph {
+      font-family: var(--font-mono);
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--color-gold);
+      background: #0E1511;
+      padding: 12px 24px;
+      border-radius: 12px;
+      border: 1px solid #27372C;
+      white-space: nowrap;
+      letter-spacing: 2px;
+    }
+
+    .concept-banner-text h3 {
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+      color: #FFFFFF;
+    }
+
+    .concept-banner-text p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Palette section */
+    .palette-section {
+      background: var(--color-card-dark);
+      border: 1px solid var(--color-card-border);
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 50px;
+    }
+
+    .palette-section h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .color-swatch {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111A15;
+      border: 1px solid var(--color-card-border);
+    }
+
+    .swatch-color {
+      height: 90px;
+      width: 100%;
+    }
+
+    .swatch-info {
+      padding: 12px;
+    }
+
+    .swatch-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+
+    .swatch-hex {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge badge-highlight">Nueva Evolución Minimalista</span>
+      <h1>SIGA - Identidad Visual y Logotipo</h1>
+      <p class="subtitle">Evolución del isotipo: Desde el diseño poligonal hasta la síntesis geométrica inspirada en corchetes y código de software.</p>
+    </header>
+
+    <!-- Explicación de la idea del usuario -->
+    <div class="concept-banner">
+      <div class="concept-banner-glyph">&lt; [ ]</div>
+      <div class="concept-banner-text">
+        <h3>El Concepto Sintético del Usuario: &lt; [ ]</h3>
+        <p>Una genialidad de síntesis: El pico del ave se sintetiza con el símbolo angular <strong>&lt;</strong>, mientras que la cabeza, cuerpo y ala se construyen mediante corchetes rectangulares <strong>[ ]</strong>. El logotipo es a la vez una silueta avícola reconocible y una declaración de tecnología/código de software puro.</p>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 1: NUEVOS LOGOS BRACKET MINIMALISTAS (< [ ] ) -->
+    <h2 class="section-title">✨ Propuestas Minimalistas Basadas en <code>&lt; [ ]</code></h2>
+    <div class="showcase-grid">
+
+      <!-- Opción 1: Gallo Bracket Completo -->
+      <div class="card featured">
+        <div class="preview-box light">
+          <img src="assets/siga_logo_bracket_minimal.jpg" alt="SIGA Minimal Bracket Logo">
+        </div>
+        <h3 class="card-title">
+          1. Gallo Bracket Geométrico
+          <span style="font-size: 0.75rem; background: rgba(212,163,89,0.2); color: #D4A359; padding: 3px 8px; border-radius: 6px;">RECOMENDADO</span>
+        </h3>
+        <p class="card-desc">Gallo completo construido íntegramente con corchetes: pico angular <strong>&lt;</strong>, cresta en muescas, torso en corchete frontal <strong>[</strong>, ala dorada interior y cola <strong>]</strong>. Limpio, moderno y con altísimo poder de recordación.</p>
+        <div class="card-footer">
+          <a href="assets/siga_logo_bracket_minimal.jpg" download class="btn btn-gold">Descargar JPG</a>
+          <a href="assets/siga-logo-bracket.svg" target="_blank" class="btn btn-outline">Ver Vector SVG</a>
+        </div>
+      </div>
+
+      <!-- Opción 2: Glifo Pollito Minimalista -->
+      <div class="card">
+        <div class="preview-box light">
+          <img src="assets/siga_logo_bracket_glyph.jpg" alt="SIGA Bracket Glyph">
+        </div>
+        <h3 class="card-title">2. Glifo Pollito Tipográfico</h3>
+        <p class="card-desc">Máxima síntesis Bauhaus: Un pollito/chick esquemático donde el pico es el chevron <strong>&lt;</strong>, el pecho es el corchete <strong>[</strong>, con ojo digital y ala dorada. Ultra compacto, perfecto para favicons y botones.</p>
+        <div class="card-footer">
+          <a href="assets/siga_logo_bracket_glyph.jpg" download class="btn btn-primary">Descargar JPG</a>
+        </div>
+      </div>
+
+      <!-- Opción 3: Vector SVG Puro Editable -->
+      <div class="card">
+        <div class="preview-box light">
+          <img src="assets/siga-logo-bracket.svg" alt="SIGA Vector Bracket SVG" style="max-height: 95px;">
+        </div>
+        <h3 class="card-title">3. Vector SVG Puro Horizontal</h3>
+        <p class="card-desc">Código vectorial escalable al 100% que incorpora el isotipo <strong>&lt; [ ]</strong> junto al logotipo tipográfico SIGA y el tag tecnológico <code>&lt;[ TECH & POULTRY ]&gt;</code> para barras de navegación.</p>
+        <div class="card-footer">
+          <a href="assets/siga-logo-bracket.svg" target="_blank" class="btn btn-primary">Ver SVG Puro</a>
+          <a href="assets/siga-logo-bracket.svg" download class="btn btn-outline">Descargar SVG</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECCIÓN 2: VARIANTES ANTERIORES (Para Comparación) -->
+    <h2 class="section-title">📂 Diseños Poligonales Anteriores (Referencia)</h2>
+    <div class="showcase-grid">
+
+      <div class="card">
+        <div class="preview-box light">
+          <img src="assets/siga_logo_primary.jpg" alt="SIGA Logo Primario Poligonal">
+        </div>
+        <h3 class="card-title">Poligonal Orgánico</h3>
+        <p class="card-desc">La versión más ilustrativa con ala en hoja vegetal y líneas de circuitos internos.</p>
+        <div class="card-footer">
+          <a href="assets/siga_logo_primary.jpg" download class="btn btn-outline">Descargar JPG</a>
+          <a href="assets/siga-logo-horizontal.svg" download class="btn btn-outline">Descargar SVG</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="preview-box dark">
+          <img src="assets/siga_app_icon_dark.jpg" alt="SIGA App Icon Dark">
+        </div>
+        <h3 class="card-title">App Icon Squircle (Modo Oscuro)</h3>
+        <p class="card-desc">Ícono oscuro con acabado 3D y brillo esmeralda para el instalador de la app móvil.</p>
+        <div class="card-footer">
+          <a href="assets/siga_app_icon_dark.jpg" download class="btn btn-outline">Descargar JPG</a>
+          <a href="assets/siga-logo-icon.svg" download class="btn btn-outline">Descargar Isotipo</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="preview-box dark">
+          <img src="assets/siga-logo-dark.svg" alt="SIGA Vector Dark" style="max-height: 85px;">
+        </div>
+        <h3 class="card-title">Vector Modo Oscuro (Command Center)</h3>
+        <p class="card-desc">SVG con resplandor neón adaptado a pantallas tácticas y monitores de galpón.</p>
+        <div class="card-footer">
+          <a href="assets/siga-logo-dark.svg" target="_blank" class="btn btn-outline">Ver SVG</a>
+          <a href="assets/siga-logo-dark.svg" download class="btn btn-outline">Descargar SVG</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Paleta de Colores Oficial -->
+    <div class="palette-section">
+      <h2>🎨 Paleta Cromática Oficial SIGA</h2>
+      <p style="color: var(--color-text-muted);">Valores exactos del Manual de Identidad Corporativa aplicados en todos los diseños.</p>
+
+      <div class="palette-grid">
+        <div class="color-swatch">
+          <div class="swatch-color" style="background-color: #4A7259;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Verde Sostenible</div>
+            <div class="swatch-hex">#4A7259</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-color" style="background-color: #D4A359;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Maíz Dorado</div>
+            <div class="swatch-hex">#D4A359</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-color" style="background-color: #8A4917;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Marrón Tierra</div>
+            <div class="swatch-hex">#8A4917</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-color" style="background-color: #B44B3E;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Rojo Terracota</div>
+            <div class="swatch-hex">#B44B3E</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-color" style="background-color: #282828;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Grafito Profundo</div>
+            <div class="swatch-hex">#282828</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-color" style="background-color: #E2EEE6;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name" style="color: #4A7259;">Verde Menta Suave</div>
+            <div class="swatch-hex" style="color: #4A7259;">#E2EEE6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

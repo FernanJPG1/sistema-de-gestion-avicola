@@ -1,0 +1,14 @@
+{
+  "name": "sistema-de-gestion-avicola",
+  "version": "1.0.0",
+  "description": "SIGA Enterprise - Sistema Integrado de Gestión Avícola",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3000 --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}

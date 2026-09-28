@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="iconGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#588B6C"/>
+      <stop offset="100%" stop-color="#3A5C47"/>
+    </linearGradient>
+    <linearGradient id="iconGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5B56C"/>
+      <stop offset="100%" stop-color="#C28F42"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(10, 8)">
+    <!-- Cresta Geométrica Dorada -->
+    <polygon points="38,18 45,8 52,17 59,10 63,22 48,26" fill="url(#iconGoldGrad)" />
+    
+    <!-- Cabeza y Pico -->
+    <polygon points="46,26 62,28 54,42 42,40" fill="url(#iconGreenGrad)" />
+    <polygon points="62,28 72,33 60,38" fill="url(#iconGoldGrad)" /> <!-- Pico -->
+    <circle cx="50" cy="32" r="2.2" fill="#FFFFFF" /> <!-- Ojo Tech -->
+
+    <!-- Barba / Carúncula -->
+    <path d="M 52,42 Q 54,50 49,52 Q 45,48 48,42 Z" fill="#B44B3E" />
+
+    <!-- Pecho con Nodo de Datos -->
+    <polygon points="42,40 54,42 48,68 32,56" fill="url(#iconGreenGrad)" />
+    
+    <!-- Hoja / Ala Tecnológica (Sostenibilidad + Circuitos) -->
+    <path d="M 46,45 C 72,40 88,60 76,84 C 58,92 40,78 46,45 Z" fill="#4A7259" opacity="0.95" />
+    
+    <!-- Pistas de Circuito en el Ala -->
+    <path d="M 52,58 L 64,66 L 72,66" stroke="url(#iconGoldGrad)" stroke-width="2.2" stroke-linecap="round" fill="none" />
+    <circle cx="72" cy="66" r="3" fill="#D4A359" />
+    
+    <path d="M 56,70 L 62,76 L 68,76" stroke="#E2EEE6" stroke-width="1.8" stroke-linecap="round" fill="none" />
+    <circle cx="68" cy="76" r="2.2" fill="#E2EEE6" />
+
+    <!-- Cola Geométrica Estilizada -->
+    <path d="M 44,52 C 34,42 22,46 16,56 C 26,56 34,60 38,68 Z" fill="url(#iconGreenGrad)" />
+    <path d="M 38,62 C 26,58 16,66 12,78 C 22,74 30,76 36,82 Z" fill="url(#iconGoldGrad)" opacity="0.9" />
+    <path d="M 36,74 C 26,76 20,86 18,94 C 26,88 34,88 40,88 Z" fill="#3A5C47" />
+
+    <!-- Base del Brote / Tallo Digital -->
+    <circle cx="48" cy="90" r="3.5" fill="#4A7259" />
+    <path d="M 48,90 Q 56,92 64,88" stroke="#4A7259" stroke-width="2.5" stroke-linecap="round" fill="none" />
+  </g>
+</svg>

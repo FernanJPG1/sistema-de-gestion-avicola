@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIGA Enterprise &mdash; Sistema Integrado de Gestión Avícola</title>
+  <link rel="icon" type="image/svg+xml" href="assets/siga-logo-icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/css/variables.css" />
+  <link rel="stylesheet" href="src/css/main.css" />
+  <link rel="stylesheet" href="src/css/field-mode.css" />
+</head>
+<body>
+  <div id="app-root">
+    <!-- SIDEBAR DE NAVEGACIÓN CORPORATIVA -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo-box">
+          <img src="assets/siga-logo-horizontal.svg" alt="SIGA Enterprise" class="sidebar-logo-img" />
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <span class="nav-section-label">Supervisión Central</span>
+        <a class="nav-link active" href="#dashboard" id="nav-dashboard">
+          <span class="nav-icon" id="nav-icon-dash"></span>
+          <span>Command Center</span>
+        </a>
+
+        <span class="nav-section-label">Producción &amp; Lotes</span>
+        <a class="nav-link" href="#engorde" id="nav-engorde">
+          <span class="nav-icon" id="nav-icon-engorde"></span>
+          <span>Pollos de Engorde</span>
+          <span class="nav-badge">2 lotes</span>
+        </a>
+        <a class="nav-link" href="#ponedoras" id="nav-ponedoras">
+          <span class="nav-icon" id="nav-icon-ponedoras"></span>
+          <span>Gallinas Ponedoras</span>
+          <span class="nav-badge">2 lotes</span>
+        </a>
+
+        <span class="nav-section-label">Operatividad</span>
+        <a class="nav-link" href="#field-mode" id="nav-field-mode">
+          <span class="nav-icon" id="nav-icon-field"></span>
+          <span>Modo Campo (Offline)</span>
+        </a>
+
+        <span class="nav-section-label">Normativa &amp; Finanzas</span>
+        <a class="nav-link" href="#bioseguridad" id="nav-bioseguridad">
+          <span class="nav-icon" id="nav-icon-bioseg"></span>
+          <span>Bioseguridad &amp; ICA</span>
+        </a>
+        <a class="nav-link" href="#costos" id="nav-costos">
+          <span class="nav-icon" id="nav-icon-costos"></span>
+          <span>Costeo por Absorción</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="farm-selector" title="Administrar datos de granja y respaldos">
+          <div class="farm-avatar" id="farm-avatar-icon"></div>
+          <div class="farm-info">
+            <h4 id="sidebar-farm-name">Granja El Paraíso</h4>
+            <p id="sidebar-farm-ica">ICA-GAB-004821</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- WRAPPER PRINCIPAL -->
+    <div class="main-wrapper">
+      <!-- TOPBAR EJECUTIVO STICKY -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="page-title-box">
+            <h1 id="topbar-page-title">Command Center Ejecutivo</h1>
+            <p>Sistema Integrado de Gestión Avícola &bull; Versión Enterprise 2026</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Toggle Tema Claro / Oscuro -->
+          <button class="btn-theme-toggle" id="btn-theme-toggle" title="Alternar Modo Claro / Oscuro" aria-label="Alternar tema">
+            <span id="theme-toggle-icon"></span>
+          </button>
+
+          <!-- Botón de Sincronización Local-First -->
+          <div class="sync-status" id="btn-sync-status" title="Clic para forzar sincronización con el servidor central">
+            <span class="sync-dot"></span>
+            <span id="sync-badge-text">En Línea &bull; Sincronizado</span>
+          </div>
+
+          <!-- Acceso Rápido a Modo Campo -->
+          <button class="btn-field-mode-toggle" id="btn-quick-field-mode">
+            <span id="quick-field-icon"></span>
+            <span>Modo Campo</span>
+          </button>
+
+          <!-- Responsable Veterinario -->
+          <div class="user-pill" title="Médico Veterinario Responsable">
+            <span class="user-pill-avatar" id="user-pill-icon"></span>
+            <div class="user-pill-info">
+              <span class="user-pill-name">Dr. R. Méndez</span>
+              <span class="user-pill-role">MVZ Oficial</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ÁREA DE CONTENIDO DINÁMICO -->
+      <main class="page-container" id="main-content-area">
+        <!-- Renderizado dinámico de módulos -->
+      </main>
+    </div>
+  </div>
+
+  <!-- MODAL GLOBAL -->
+  <div class="modal-overlay" id="global-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="global-modal-title">Título del Formulario</h3>
+        <button class="modal-close" id="global-modal-close" aria-label="Cerrar modal">&times;</button>
+      </div>
+      <div class="modal-body" id="global-modal-body">
+        <!-- Contenido dinámico del modal -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATIONS -->
+  <div id="toast-container"></div>
+
+  <!-- SCRIPT DE INICIALIZACIÓN -->
+  <script type="module" src="src/js/app.js"></script>
+</body>
+</html>

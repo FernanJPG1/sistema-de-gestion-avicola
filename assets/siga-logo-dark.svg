@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="darkGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6FA585"/>
+      <stop offset="100%" stop-color="#4A7259"/>
+    </linearGradient>
+    <linearGradient id="darkGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3C880"/>
+      <stop offset="100%" stop-color="#D4A359"/>
+    </linearGradient>
+    <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#4A7259" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- ISOTIPO (Modo Oscuro) -->
+  <g transform="translate(15, 10)" filter="url(#glowEffect)">
+    <!-- Cresta Dorada Brillante -->
+    <polygon points="38,18 45,8 52,17 59,10 63,22 48,26" fill="url(#darkGoldGrad)" />
+    
+    <!-- Cabeza y Pico -->
+    <polygon points="46,26 62,28 54,42 42,40" fill="url(#darkGreenGrad)" />
+    <polygon points="62,28 72,33 60,38" fill="url(#darkGoldGrad)" />
+    <circle cx="50" cy="32" r="2.2" fill="#FFFFFF" />
+
+    <!-- Carúncula / Barba -->
+    <path d="M 52,42 Q 54,50 49,52 Q 45,48 48,42 Z" fill="#E06D5E" />
+
+    <!-- Pecho -->
+    <polygon points="42,40 54,42 48,68 32,56" fill="url(#darkGreenGrad)" />
+    
+    <!-- Ala Hoja Neón Sostenible -->
+    <path d="M 46,45 C 72,40 88,60 76,84 C 58,92 40,78 46,45 Z" fill="#588B6C" opacity="0.95" />
+    
+    <!-- Circuitos Iluminados -->
+    <path d="M 52,58 L 64,66 L 72,66" stroke="url(#darkGoldGrad)" stroke-width="2.2" stroke-linecap="round" fill="none" />
+    <circle cx="72" cy="66" r="3" fill="#F3C880" />
+    
+    <path d="M 56,70 L 62,76 L 68,76" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" fill="none" />
+    <circle cx="68" cy="76" r="2.2" fill="#FFFFFF" />
+
+    <!-- Cola Geométrica -->
+    <path d="M 44,52 C 34,42 22,46 16,56 C 26,56 34,60 38,68 Z" fill="url(#darkGreenGrad)" />
+    <path d="M 38,62 C 26,58 16,66 12,78 C 22,74 30,76 36,82 Z" fill="url(#darkGoldGrad)" opacity="0.95" />
+    <path d="M 36,74 C 26,76 20,86 18,94 C 26,88 34,88 40,88 Z" fill="#4A7259" />
+
+    <!-- Brote Base -->
+    <circle cx="48" cy="90" r="3.5" fill="#6FA585" />
+    <path d="M 48,90 Q 56,92 64,88" stroke="#6FA585" stroke-width="2.5" stroke-linecap="round" fill="none" />
+  </g>
+
+  <!-- LOGOTIPO / TIPOGRAFÍA MODO OSCURO -->
+  <g transform="translate(125, 20)">
+    <text x="0" y="52" font-family="'Inter', 'Segoe UI', -apple-system, sans-serif" font-size="50" font-weight="900" letter-spacing="-1" fill="#FFFFFF">
+      S<tspan fill="#6FA585">I</tspan>G<tspan fill="#F3C880">A</tspan>
+    </text>
+
+    <text x="3" y="74" font-family="'Inter', 'Segoe UI', -apple-system, sans-serif" font-size="13.5" font-weight="600" letter-spacing="1.8" fill="#C5D3CB">
+      SISTEMA INTEGRADO DE GESTIÓN AVÍCOLA
+    </text>
+
+    <rect x="2" y="84" width="70" height="3" rx="1.5" fill="#6FA585" />
+    <rect x="76" y="84" width="22" height="3" rx="1.5" fill="#F3C880" />
+  </g>
+</svg>
