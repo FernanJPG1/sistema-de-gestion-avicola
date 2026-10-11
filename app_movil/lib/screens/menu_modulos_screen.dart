@@ -7,13 +7,19 @@
 // Permite que el operario elija con un solo toque con el dedo qué va a registrar:
 // 1. Pollos de Engorde (Consumo diario y mortalidad).
 // 2. Gallinas Ponedoras (Recolección y clasificación de huevos).
-// 3. Muestreo Biométrico (Pesaje de 100 aves para calcular el CV%).
-// 4. Bioseguridad y Vacunación ICA.
+// 3. Muestreo Biométrico (Pesaje muestral y cálculo de uniformidad).
+// 4. Ranking Zootécnico (Podio de Medallas Oro, Plata, Bronce).
+// 5. Buzón de Sincronización (Pendientes por subir al servidor).
+// 6. Supervisión y Reportes PDF (Impresión y WhatsApp).
 // ============================================================================
 
 import 'package:flutter/material.dart';
 import 'package:app_movil/screens/form_registro_campo_screen.dart';
+import 'package:app_movil/screens/form_produccion_huevos_screen.dart';
+import 'package:app_movil/screens/form_pesaje_biometrico_screen.dart';
 import 'package:app_movil/screens/rendimiento_screen.dart';
+import 'package:app_movil/screens/historial_screen.dart';
+import 'package:app_movil/screens/admin_panel_hub_screen.dart';
 
 class MenuModulosScreen extends StatelessWidget {
   const MenuModulosScreen({super.key});
@@ -78,7 +84,7 @@ class MenuModulosScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => const FormRegistroCampoScreen(tipo: 'PONEDORA'),
+                          builder: (_) => const FormProduccionHuevosScreen(),
                         ),
                       );
                     },
@@ -92,7 +98,7 @@ class MenuModulosScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => const FormRegistroCampoScreen(tipo: 'PESAJE'),
+                          builder: (_) => const FormPesajeBiometricoScreen(),
                         ),
                       );
                     },
@@ -107,6 +113,34 @@ class MenuModulosScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (_) => const RendimientoScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                  _ModuloTile(
+                    title: 'Buzón de Salida',
+                    subtitle: 'Pendientes Sync y 48h',
+                    icon: Icons.outbox,
+                    color: const Color(0xFF5D4037),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const HistorialScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                  _ModuloTile(
+                    title: 'Supervisión y PDF',
+                    subtitle: 'Reportes y Servidor',
+                    icon: Icons.picture_as_pdf,
+                    color: const Color(0xFFC2185B),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const AdminPanelHubScreen(),
                         ),
                       );
                     },
@@ -146,10 +180,10 @@ class _ModuloTile extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: color.withOpacity(0.35), width: 1.5),
+          border: Border.all(color: color.withValues(alpha: 0.35), width: 1.5),
           boxShadow: [
             BoxShadow(
-              color: color.withOpacity(0.12),
+              color: color.withValues(alpha: 0.12),
               blurRadius: 8,
               offset: const Offset(0, 3),
             ),
@@ -160,7 +194,7 @@ class _ModuloTile extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 26,
-              backgroundColor: color.withOpacity(0.12),
+              backgroundColor: color.withValues(alpha: 0.12),
               child: Icon(icon, color: color, size: 28),
             ),
             const SizedBox(height: 10),

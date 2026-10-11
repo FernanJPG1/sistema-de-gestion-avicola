@@ -8,13 +8,17 @@
 // 2. Tabla de Lotes con colores agronómicos (#7CB342 y #33691E).
 // 3. Indicador de sincronización Wi-Fi (nube ámbar o check verde).
 // 4. El Candado de 48 Horas de seguridad.
-// 5. Botón flotante (+) para registrar pesajes o novedades de campo.
+// 5. Botón flotante (+) para registrar novedades de campo.
 // ============================================================================
 
 import 'package:flutter/material.dart';
 import 'package:app_movil/database/local_db.dart';
 import 'package:app_movil/utils/calendario_util.dart';
 import 'package:app_movil/widgets/firma_watermark.dart';
+import 'package:app_movil/screens/menu_modulos_screen.dart';
+import 'package:app_movil/screens/historial_screen.dart';
+import 'package:app_movil/screens/admin_panel_hub_screen.dart';
+import 'package:app_movil/services/sync_service.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -24,6 +28,7 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  final SyncService _syncService = SyncService();
   List<Map<String, dynamic>> _lotes = [];
   bool _cargando = true;
   bool _sincronizando = false;
@@ -49,18 +54,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
     });
   }
 
-  void _simularSincronizacion() async {
+  void _ejecutarSincronizacionReal() async {
     setState(() => _sincronizando = true);
-    await Future.delayed(const Duration(milliseconds: 1200));
-    final db = await LocalDatabase.instance.database;
-    await db.rawUpdate('UPDATE tb_lotes SET sincronizado = 1');
+    final resultado = await _syncService.sincronizarTodo();
     await _cargarLotes();
     setState(() => _sincronizando = false);
+
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('✓ Sincronización avícola completada con el servidor central.'),
-        backgroundColor: Color(0xFF33691E),
+      SnackBar(
+        content: Text(resultado.mensaje),
+        backgroundColor: resultado.exitoso ? const Color(0xFF33691E) : Colors.red.shade700,
+        duration: const Duration(seconds: 4),
       ),
     );
   }
@@ -90,12 +95,34 @@ class _DashboardScreenState extends State<DashboardScreen> {
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 18,
+                fontSize: 16,
               ),
             ),
           ],
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.outbox, color: Colors.white),
+            tooltip: 'Buzón de Sincronización',
+            onPressed: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const HistorialScreen()),
+              );
+              _cargarLotes();
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.admin_panel_settings, color: Colors.white),
+            tooltip: 'Panel de Administración y Reportes',
+            onPressed: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const AdminPanelHubScreen()),
+              );
+              _cargarLotes();
+            },
+          ),
           IconButton(
             icon: _sincronizando
                 ? const SizedBox(
@@ -104,17 +131,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2.5),
                   )
                 : const Icon(Icons.sync, color: Colors.white),
-            tooltip: 'Sincronizar Lotes',
-            onPressed: _sincronizando ? null : _simularSincronizacion,
+            tooltip: 'Sincronizar Lotes y Novedades',
+            onPressed: _sincronizando ? null : _ejecutarSincronizacionReal,
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 4),
         ],
       ),
       body: Stack(
         children: [
           Column(
             children: [
-              // BANNER SUPERIOR DE TARJETAS KPI (ESTÉTICA SIEMBRAS)
+              // BANNER SUPERIOR DE TARJETAS KPI
               Container(
                 padding: const EdgeInsets.all(12),
                 color: Colors.white,
@@ -325,16 +352,16 @@ class _KpiCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
         decoration: BoxDecoration(
-          color: color.withOpacity(0.08),
+          color: color.withValues(alpha: 0.08),
           borderRadius: BorderRadius.circular(10),
-          border: BorderSide(color: color.withOpacity(0.25)),
+          border: Border.all(color: color.withValues(alpha: 0.25)),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(icon, size: 14, color: color),
                 const SizedBox(width: 4),
@@ -347,11 +374,12 @@ class _KpiCard extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               value,
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900, color: color),
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: color),
             ),
+            const SizedBox(height: 2),
             Text(
               sub,
-              style: TextStyle(fontSize: 9.5, color: Colors.grey.shade700),
+              style: TextStyle(fontSize: 9, color: Colors.grey.shade600),
             ),
           ],
         ),
@@ -369,14 +397,15 @@ class _DataChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
         color: const Color(0xFFF1F8E9),
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(color: const Color(0xFFDCEDC8)),
       ),
       child: Text(
         '$label: $val',
-        style: const TextStyle(fontSize: 10.5, fontWeight: FontWeight.w600, color: Color(0xFF33691E)),
+        style: const TextStyle(fontSize: 11, color: Color(0xFF33691E), fontWeight: FontWeight.w500),
       ),
     );
   }
