@@ -1,1293 +1,1022 @@
-@import './variables.css';
+/* ============================================================================
+   ESTILOS VISUALES EXACTOS A PROYECTO SIEMBRAS (01_dashboard_principal.png)
+   Alineación 100% con la estética táctil de campo en Buenavista Flowers / SIGA Avícola
+   ============================================================================ */
 
-/* =========================================================
-   SIGA ENTERPRISE - HYPER-MODERN AGRI-TECH UI SYSTEM
-   Designed for Executive Wow-Factor, Precision & High Usability
-   ========================================================= */
-
-/* Reset & Box Sizing */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-  color-scheme: dark;
-}
-
-[data-theme="light"] {
-  color-scheme: light;
-}
-
-body {
-  font-family: var(--font-sans);
-  background-color: var(--bg-app);
-  background-image: var(--bg-app-gradient);
-  background-attachment: fixed;
-  color: var(--text-main);
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body.siga-mobile-layout {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #F9FBE7; /* Fondo follaje suave idéntico a Siembras */
+  color: #263238;
+  line-height: 1.4;
   overflow-x: hidden;
   min-height: 100vh;
-  transition: background 0.3s ease, color 0.3s ease;
+  padding-bottom: 90px; /* Espacio para el FAB */
 }
 
-/* Custom Scrollbars */
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-pill);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  letter-spacing: -0.025em;
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-/* SVG Vector Icon Helper */
-.siga-icon {
-  display: inline-block;
-  vertical-align: middle;
-  stroke: currentColor;
-  flex-shrink: 0;
-}
-
-/* App Shell Structure */
-#app-root {
-  display: flex;
-  min-height: 100vh;
-  position: relative;
-}
-
-/* =========================================================
-   SIDEBAR CORPORATIVA (CYBER-OBSIDIAN GLASS)
-   ========================================================= */
-.sidebar {
-  width: var(--sidebar-width);
-  background: var(--bg-sidebar);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-right: 1px solid var(--border-sidebar);
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  transition: var(--transition-smooth);
-}
-
-.sidebar-header {
-  padding: 22px 20px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid var(--border-sidebar);
-  position: relative;
-}
-
-.sidebar-header::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 20%;
-  width: 60%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.5), transparent);
-}
-
-.sidebar-logo-box {
-  width: 100%;
-  max-width: 195px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.sidebar-logo-img {
-  width: 100%;
-  height: auto;
-  max-height: 48px;
-  filter: drop-shadow(0 2px 10px rgba(16, 185, 129, 0.25));
-}
-
-.sidebar-nav {
-  padding: 16px 12px;
-  flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.nav-section-label {
-  font-family: var(--font-display);
-  font-size: 0.68rem;
-  font-weight: 800;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 1.4px;
-  padding: 16px 14px 6px;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 14px;
-  color: var(--text-sidebar);
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: var(--transition-smooth);
-  cursor: pointer;
-  border: 1px solid transparent;
-  position: relative;
-}
-
-.nav-link:hover {
-  background: var(--bg-sidebar-hover);
+/* ============================================================================
+   1. TOPBAR AGRONÓMICA VERDE (#689F38)
+   ============================================================================ */
+.siembras-topbar {
+  background-color: #689F38; /* Verde agrícola brillante oficial */
   color: #FFFFFF;
-  transform: translateX(3px);
-}
-
-.nav-link.active {
-  background: var(--bg-sidebar-active);
-  color: #FFFFFF;
-  font-weight: 600;
-  border-color: rgba(16, 185, 129, 0.35);
-  box-shadow: 0 4px 16px -2px rgba(16, 185, 129, 0.2);
-}
-
-.nav-link.active::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 8px;
-  bottom: 8px;
-  width: 3.5px;
-  border-radius: 0 4px 4px 0;
-  background: var(--siga-green-primary);
-  box-shadow: 0 0 10px var(--siga-green-primary);
-}
-
-.nav-link .nav-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  color: currentColor;
-  transition: transform 0.2s ease;
-}
-
-.nav-link:hover .nav-icon {
-  transform: scale(1.1);
-}
-
-.nav-link.active .nav-icon {
-  color: var(--siga-green-light);
-}
-
-.nav-badge {
-  margin-left: auto;
-  padding: 2px 8px;
-  border-radius: var(--radius-pill);
-  font-size: 0.68rem;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  background: rgba(245, 158, 11, 0.15);
-  color: #FBBF24;
-  border: 1px solid rgba(245, 158, 11, 0.3);
-}
-
-.sidebar-footer {
-  padding: 14px 14px;
-  border-top: 1px solid var(--border-sidebar);
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.farm-selector {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 9px 12px;
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: var(--transition-smooth);
-  cursor: pointer;
-}
-
-.farm-selector:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(16, 185, 129, 0.3);
-  transform: translateY(-1px);
-}
-
-.farm-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(16, 185, 129, 0.05));
-  color: var(--siga-green-light);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 0 14px rgba(16, 185, 129, 0.15);
-}
-
-.farm-info h4 {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 140px;
-}
-
-.farm-info p {
-  font-size: 0.7rem;
-  color: var(--siga-gold-light);
-  font-family: var(--font-mono);
-}
-
-/* =========================================================
-   MAIN WRAPPER & TOPBAR
-   ========================================================= */
-.main-wrapper {
-  margin-left: var(--sidebar-width);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  position: relative;
-}
-
-.topbar {
-  height: var(--topbar-height);
-  background: var(--bg-topbar);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 36px;
+  padding: 10px 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
   position: sticky;
   top: 0;
-  z-index: 90;
-  transition: var(--transition-smooth);
+  z-index: 100;
 }
 
 .topbar-left {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
-.page-title-box h1 {
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: var(--text-main);
-  letter-spacing: -0.03em;
-  line-height: 1.2;
+.topbar-logo-icon {
+  background-color: #FFFFFF;
+  color: #558B2F;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.page-title-box p {
-  font-size: 0.78rem;
-  color: var(--text-muted);
+.topbar-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #FFFFFF;
 }
 
 .topbar-right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
-/* Theme Toggle Button */
-.btn-theme-toggle {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-sm);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
+.topbar-icon-btn {
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  transition: background-color 0.15s ease;
 }
 
-.btn-theme-toggle:hover {
-  background: var(--bg-card-hover);
-  color: var(--siga-gold-primary);
-  border-color: var(--siga-gold-border);
-  box-shadow: var(--siga-gold-glow);
-  transform: rotate(20deg) scale(1.05);
+.topbar-icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Sync Status Pill */
-.sync-status {
-  display: inline-flex;
+/* BOTÓN PÍLDORA VERDE OSCURO: [ 🔄 SINCRONIZAR ] */
+.topbar-sync-pill {
+  background-color: #1B5E20; /* Verde bosque profundo idéntico al pantallazo */
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: flex;
   align-items: center;
-  gap: 9px;
-  padding: 7px 16px;
-  background: var(--siga-green-soft);
-  border: 1px solid var(--siga-green-border);
-  border-radius: var(--radius-pill);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--siga-green-light);
+  gap: 6px;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
 }
 
-.sync-status:hover {
-  background: rgba(16, 185, 129, 0.22);
-  box-shadow: var(--siga-green-glow);
+.topbar-sync-pill:hover {
+  background-color: #144918;
   transform: translateY(-1px);
 }
 
-.sync-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--siga-green-primary);
-  box-shadow: 0 0 10px var(--siga-green-primary);
-  position: relative;
+.topbar-sync-pill.syncing .sync-icon {
+  animation: spin 1s linear infinite;
 }
 
-.sync-dot::after {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  border-radius: 50%;
-  border: 1px solid var(--siga-green-primary);
-  animation: radarPing 2.2s infinite cubic-bezier(0, 0, 0.2, 1);
+@keyframes spin {
+  100% { transform: rotate(360deg); }
 }
 
-@keyframes radarPing {
-  0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(2.6); opacity: 0; }
-}
-
-/* Quick Field Mode Button */
-.btn-field-mode-toggle {
-  display: inline-flex;
+/* ============================================================================
+   2. BARRA DE FILTROS Y CHIPS HORIZONTALES
+   ============================================================================ */
+.siembras-filter-bar {
+  background-color: #FFFFFF;
+  border-bottom: 1.5px solid #E0E0E0;
+  padding: 8px 12px;
+  display: flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #F59E0B, #D97706);
-  color: #111827;
-  font-weight: 700;
-  font-size: 0.82rem;
-  padding: 8px 16px;
-  border-radius: var(--radius-sm);
-  border: none;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
-}
-
-.btn-field-mode-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
-}
-
-/* User Pill */
-.user-pill {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 5px 12px 5px 6px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
-}
-
-.user-pill-avatar {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--siga-green-primary), var(--siga-green-dark));
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
-}
-
-.user-pill-name {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--text-main);
-  display: block;
-  line-height: 1.1;
-}
-
-.user-pill-role {
-  font-size: 0.68rem;
-  color: var(--text-muted);
-  display: block;
-}
-
-/* =========================================================
-   PAGE CONTAINER & LAYOUT
-   ========================================================= */
-.page-container {
-  padding: 32px 36px 64px;
-  flex: 1;
-  max-width: 1600px;
-  width: 100%;
-}
-
-/* Section Header Bar */
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.section-title {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--text-main);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* High-Tech Alerts Banner */
-.alerts-banner {
-  background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(244, 63, 94, 0.04));
-  border: 1px solid var(--siga-terracotta-border);
-  border-left: 4px solid var(--siga-terracotta);
-  border-radius: var(--radius-md);
-  padding: 14px 20px;
-  margin-bottom: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 16px rgba(244, 63, 94, 0.1);
-}
-
-.alerts-content {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.alerts-icon {
-  color: var(--siga-terracotta);
-  display: flex;
-  align-items: center;
-}
-
-.alerts-text {
-  font-size: 0.88rem;
-  color: var(--text-main);
-}
-
-.alerts-text strong {
-  color: var(--siga-terracotta);
-  font-weight: 700;
-}
-
-.alerts-action {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--siga-gold-primary);
-  text-decoration: underline;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: color 0.2s;
-}
-
-.alerts-action:hover {
-  color: var(--siga-gold-light);
-}
-
-/* =========================================================
-   FUTURISTIC KPI CARDS (WOW FACTOR)
-   ========================================================= */
-.kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
-  gap: 20px;
-  margin-bottom: 32px;
-}
-
-.kpi-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 22px 24px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-  transition: var(--transition-smooth);
-}
-
-.kpi-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2.5px;
-  background: var(--card-accent, var(--siga-green-primary));
-  opacity: 0.85;
-}
-
-.kpi-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-card-hover);
-  border-color: rgba(16, 185, 129, 0.4);
-}
-
-.kpi-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.kpi-title {
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-
-.kpi-icon-badge {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: var(--badge-bg, rgba(16, 185, 129, 0.14));
-  color: var(--badge-color, var(--siga-green-light));
-  border: 1px solid var(--badge-border, rgba(16, 185, 129, 0.28));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.15);
-}
-
-.kpi-value-row {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  margin-bottom: 6px;
-}
-
-.kpi-value {
-  font-family: var(--font-display);
-  font-size: 2.25rem;
-  font-weight: 800;
-  color: var(--text-main);
-  letter-spacing: -0.035em;
-  line-height: 1.1;
-}
-
-.kpi-unit {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--text-muted);
-}
-
-.kpi-subtext {
-  font-size: 0.76rem;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.kpi-trend-positive {
-  color: #34D399;
-  font-weight: 700;
-}
-
-.kpi-trend-warning {
-  color: #FBBF24;
-  font-weight: 700;
-}
-
-.kpi-trend-danger {
-  color: #FB7185;
-  font-weight: 700;
-}
-
-/* =========================================================
-   PANELS & CONTAINERS (.card-panel)
-   ========================================================= */
-.card-panel {
-  background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: var(--shadow-card);
-  transition: var(--transition-smooth);
-  margin-bottom: 28px;
-}
-
-.card-panel:hover {
-  border-color: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.5);
-}
-
-.panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.panel-title {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--text-main);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.panel-subtitle {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
-
-.panel-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* =========================================================
-   BATCH (LOTE) SELECTOR STRIP
-   ========================================================= */
-.batch-header {
-  background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 20px 24px;
-  margin-bottom: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-  box-shadow: var(--shadow-card);
-}
-
-.batch-title-box h2 {
-  font-size: 1.35rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.batch-title-box p {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
-
-.batch-metrics-strip {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 14px;
-  margin-bottom: 28px;
-}
-
-.metric-strip-item {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 14px 18px;
-  display: flex;
-  flex-direction: column;
-}
-
-.metric-strip-item span:first-child {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-}
-
-.metric-strip-item span:last-child {
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: var(--text-main);
-  margin-top: 2px;
-}
-
-/* =========================================================
-   CHARTS GRID
-   ========================================================= */
-.charts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
-  gap: 24px;
-  margin-bottom: 28px;
-}
-
-canvas {
-  border-radius: var(--radius-sm);
-}
-
-/* =========================================================
-   DATA TABLES (.siga-table)
-   ========================================================= */
-.table-wrapper {
   overflow-x: auto;
-  width: 100%;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-}
-
-.siga-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  text-align: left;
-}
-
-.siga-table th {
-  font-family: var(--font-display);
-  font-size: 0.76rem;
-  font-weight: 800;
-  color: var(--siga-green-dark);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 13px 16px;
-  background: var(--siga-green-soft);
-  border-bottom: 2px solid var(--siga-green-border);
   white-space: nowrap;
-  text-align: center;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
-.siga-table td {
-  padding: 13px 16px;
-  border-bottom: 1px solid var(--border-divider);
-  font-size: 0.88rem;
-  color: var(--text-main);
-  vertical-align: middle;
-  text-align: center;
-  transition: background 0.15s ease;
+.siembras-filter-bar::-webkit-scrollbar {
+  display: none;
 }
 
-.siga-table tbody tr:hover td {
-  background: rgba(124, 179, 66, 0.04);
-}
-
-.siga-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-/* Badges con estética Siembras */
-.badge {
-  display: inline-flex;
+.filter-funnel-icon {
+  color: #689F38;
+  display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 4px 10px;
-  border-radius: var(--radius-xs);
-  font-size: 0.72rem;
-  font-weight: 700;
-  white-space: nowrap;
+  padding: 4px;
 }
 
-.badge-success {
-  background: var(--siga-green-badge);
-  color: var(--siga-green-dark);
-  border: 1px solid var(--siga-green-border);
-}
-
-.badge-warning {
-  background: var(--siga-gold-soft);
-  color: var(--siga-gold-dark);
-  border: 1px solid var(--siga-gold-border);
-}
-
-.badge-danger {
-  background: var(--siga-terracotta-soft);
-  color: var(--siga-terracotta);
-  border: 1px solid var(--siga-terracotta-border);
-}
-
-.badge-cerrado {
-  background: #ECEFF1;
-  color: #546E7A;
-  border: 1px solid #CFD8DC;
-  font-style: italic;
-}
-
-.badge-sync-ok {
-  color: var(--siga-green-primary);
-  display: inline-flex;
+.filter-dropdown-pill {
+  background-color: #FFFFFF;
+  border: 1.2px solid #C5E1A5;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #33691E;
+  display: flex;
   align-items: center;
-}
-
-.badge-sync-pending {
-  color: var(--siga-gold-primary);
-  display: inline-flex;
-  align-items: center;
-}
-
-/* Botón Finalizar Ciclo estilo Siembras */
-.btn-action-finalizar {
-  background: var(--siga-green-primary);
-  color: #FFFFFF;
-  border: none;
-  border-radius: var(--radius-xs);
-  padding: 5px 10px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  gap: 6px;
   cursor: pointer;
+}
+
+.category-chips-scroll {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cat-chip {
+  background-color: #FFFFFF;
+  border: 1.5px solid #C5E1A5;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #558B2F;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cat-chip:hover {
+  background-color: #F1F8E9;
+}
+
+.cat-chip.active {
+  background-color: #33691E; /* Verde oliva oscuro para el chip activo */
+  border-color: #33691E;
+  color: #FFFFFF;
+}
+
+.cat-chip.active .chip-badge {
+  background-color: #689F38;
+  color: #FFFFFF;
+}
+
+.cat-chip-icon-btn {
+  background-color: #FFFFFF;
+  border: 1.5px solid #C5E1A5;
+  color: #33691E;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cat-chip-pill-sync {
+  background-color: #E8F5E9;
+  border: 1.5px solid #81C784;
+  color: #2E7D32;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  transition: var(--transition-smooth);
-}
-
-.btn-action-finalizar:hover {
-  background: var(--siga-green-dark);
-  transform: translateY(-1px);
-}
-
-.badge-info {
-  background: rgba(6, 182, 212, 0.14);
-  color: #38BDF8;
-  border: 1px solid rgba(6, 182, 212, 0.3);
-}
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 18px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  border-radius: var(--radius-sm);
-  border: none;
   cursor: pointer;
-  transition: var(--transition-smooth);
-  text-decoration: none;
-  white-space: nowrap;
 }
 
-.btn:active {
-  transform: scale(0.97);
+.chip-badge {
+  background-color: #DCEDC8;
+  color: #33691E;
+  border-radius: 12px;
+  padding: 1px 7px;
+  font-size: 0.72rem;
+  font-weight: 800;
 }
 
-.btn-sm {
-  padding: 6px 12px;
-  font-size: 0.78rem;
-  border-radius: var(--radius-xs);
-}
-
-.btn-lg {
-  padding: 13px 24px;
-  font-size: 0.95rem;
-  border-radius: var(--radius-md);
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--siga-green-primary), var(--siga-green-dark));
-  color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
-}
-
-.btn-primary:hover {
-  box-shadow: 0 6px 22px rgba(16, 185, 129, 0.55);
-  transform: translateY(-1px);
-}
-
-.btn-secondary {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-main);
-}
-
-.btn-secondary:hover {
-  background: var(--bg-card-hover);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #FFFFFF;
-}
-
-.btn-danger {
-  background: linear-gradient(135deg, var(--siga-terracotta), #BE123C);
-  color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(244, 63, 94, 0.35);
-}
-
-.btn-danger:hover {
-  box-shadow: 0 6px 20px rgba(244, 63, 94, 0.5);
-}
-
-.btn-gold {
-  background: linear-gradient(135deg, var(--siga-gold-primary), var(--siga-gold-dark));
-  color: #111827;
-  font-weight: 700;
-  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
-}
-
-/* =========================================================
-   FORMS & CONTROLS
-   ========================================================= */
-.form-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin-bottom: 18px;
-}
-
-.form-group {
+/* ============================================================================
+   3. FEED DE TARJETAS TÁCTILES (IDÉNTICO A 01_dashboard_principal.png)
+   ============================================================================ */
+.siembras-feed-container {
+  max-width: 900px;
+  margin: 12px auto;
+  padding: 0 12px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
+  gap: 12px;
 }
 
-.form-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-}
-
-.form-control {
-  background: var(--bg-input);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  font-size: 0.88rem;
-  color: var(--text-main);
-  font-family: inherit;
-  transition: var(--transition-smooth);
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: var(--siga-green-primary);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-}
-
-select.form-control {
-  cursor: pointer;
-}
-
-/* Range Sliders */
-input[type="range"] {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 6px;
-  border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.12);
-  outline: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--siga-green-primary);
-  cursor: pointer;
-  box-shadow: 0 0 10px var(--siga-green-primary);
-  transition: transform 0.15s ease;
-}
-
-input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-}
-
-/* =========================================================
-   MODALS
-   ========================================================= */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(4, 7, 12, 0.78);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  z-index: 200;
+.tactile-card {
+  background: #FFFFFF;
+  border-radius: 14px;
+  border: 1.5px solid #DCEDC8;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  padding: 14px 16px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
+.tactile-card:hover {
+  box-shadow: 0 5px 12px rgba(104, 159, 56, 0.12);
 }
 
-.modal-dialog {
-  background: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-lg);
-  width: 100%;
-  max-width: 640px;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: var(--shadow-dropdown);
-  transform: scale(0.95);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.modal-overlay.active .modal-dialog {
-  transform: scale(1);
-}
-
-.modal-header {
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--border-subtle);
+.card-top-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.modal-header h3 {
+.card-main-title {
+  color: #2E7D32; /* Verde fuerte para el nombre del lote */
   font-size: 1.15rem;
   font-weight: 800;
+  letter-spacing: -0.2px;
 }
 
-.modal-close {
+.card-status-badge {
+  background-color: #E8F5E9;
+  border: 1px solid #A5D6A7;
+  color: #2E7D32;
+  border-radius: 16px;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #2E7D32;
+}
+
+.card-sub-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.type-pill-badge {
+  background-color: #DCEDC8;
+  color: #33691E;
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.card-operator-name {
+  color: #37474F;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+/* CUADRO MÉTRICO DE 4 COLUMNAS (UBICACIÓN | CANTIDAD | FECHA | CICLO) */
+.card-metrics-box {
+  background-color: #F9FBE7;
+  border: 1px solid #E0E0E0;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.metric-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-right: 1px solid #E0E0E0;
+}
+
+.metric-col:last-child {
+  border-right: none;
+}
+
+.metric-lbl {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #78909C;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.metric-val {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #263238;
+}
+
+.metric-val.highlight {
+  color: #1B5E20;
+}
+
+.card-details-line {
+  font-size: 0.8rem;
+  color: #546E7A;
+  background-color: #FAFAFA;
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card-bottom-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.btn-finalizar-ciclo {
+  background-color: #689F38;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-finalizar-ciclo:hover {
+  background-color: #558B2F;
+}
+
+.card-icons-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-action-btn {
   background: transparent;
   border: none;
-  font-size: 1.5rem;
-  color: var(--text-muted);
+  color: #78909C;
   cursor: pointer;
-  line-height: 1;
-  transition: color 0.2s;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
 }
 
-.modal-close:hover {
-  color: #FFFFFF;
+.icon-action-btn:hover {
+  color: #263238;
+  background-color: #ECEFF1;
 }
 
-.modal-body {
-  padding: 24px;
+.lock-badge-small {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
-/* =========================================================
-   GLOBAL TOAST SYSTEM
-   ========================================================= */
-#toast-container {
+.lock-locked {
+  background-color: #FFF3E0;
+  color: #E65100;
+}
+
+.lock-editable {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+/* ============================================================================
+   4. BOTÓN FLOTANTE FAB (+) IDÉNTICO A PROYECTO SIEMBRAS
+   ============================================================================ */
+.siembras-fab-btn {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  z-index: 300;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #689F38; /* Verde idéntico a Siembras */
+  color: #FFFFFF;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  pointer-events: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s ease;
 }
 
-.toast {
-  pointer-events: auto;
-  background: rgba(15, 23, 36, 0.94);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 12px 18px;
+.siembras-fab-btn:hover {
+  transform: scale(1.08);
+  background-color: #558B2F;
+}
+
+.siembras-fab-btn:active {
+  transform: scale(0.95);
+}
+
+/* ============================================================================
+   5. MODAL PANTALLA COMPLETA (02_menu_cultivos.png & Formularios)
+   ============================================================================ */
+.modal-fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-fullscreen-overlay.active {
+  display: flex;
+}
+
+.modal-fullscreen-content {
+  background-color: #F9FBE7;
+  width: 100%;
+  max-width: 760px;
+  height: 92vh;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.modal-nav-header {
+  background-color: #689F38;
+  color: #FFFFFF;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 0.88rem;
-  font-weight: 500;
+}
+
+.nav-back-btn, .nav-home-btn {
+  background: transparent;
+  border: none;
   color: #FFFFFF;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  animation: toastSlide 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
 }
 
-.toast-success {
-  border-left: 4px solid var(--siga-green-primary);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 16px rgba(16, 185, 129, 0.2);
+.nav-back-btn:hover, .nav-home-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-.toast-error {
-  border-left: 4px solid var(--siga-terracotta);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 16px rgba(244, 63, 94, 0.2);
+.nav-header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
 }
 
-.toast-warning {
-  border-left: 4px solid var(--siga-gold-primary);
+.nav-header-title h2 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.2px;
 }
 
-@keyframes toastSlide {
-  from {
-    transform: translateY(20px) scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
+.modal-body-scroll {
+  padding: 18px;
+  overflow-y: auto;
+  flex: 1;
 }
 
-/* =========================================================
-   RESPONSIVE DESIGN
-   ========================================================= */
-@media (max-width: 1024px) {
-  .charts-grid {
+.section-instruction {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #33691E;
+  margin-bottom: 16px;
+}
+
+/* GRID DE TARJETAS DE CULTIVO (02_menu_cultivos.png) */
+.cultivos-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 500px) {
+  .cultivos-grid-cards {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-  }
-  .sidebar.mobile-open {
-    transform: translateX(0);
-  }
-  .main-wrapper {
-    margin-left: 0;
-  }
-  .topbar {
-    padding: 0 18px;
-  }
-  .page-container {
-    padding: 20px 18px 48px;
-  }
+.cultivo-card {
+  background-color: #FFFFFF;
+  border: 1.5px solid #C5E1A5;
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
 }
 
-/* =========================================================
-   UTILITY STATUS & COLOR CLASSES
-   ========================================================= */
-.text-success { color: var(--siga-green-light) !important; font-weight: 700; }
-.text-warning { color: var(--siga-gold-light) !important; font-weight: 700; }
-.text-danger  { color: #FB7185 !important; font-weight: 700; }
-.text-info    { color: #38BDF8 !important; font-weight: 700; }
-.text-muted   { color: var(--text-muted) !important; }
-
-.card-panel-selected {
-  border-color: var(--siga-green-primary) !important;
-  box-shadow: 0 0 24px rgba(124, 179, 66, 0.25), var(--shadow-card) !important;
+.cultivo-card:hover {
+  border-color: #689F38;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(104, 159, 56, 0.15);
 }
 
-/* =========================================================
-   BOTÓN FLOTANTE (+) IDÉNTICO A PROYECTO SIEMBRAS
-   ========================================================= */
-.fab-action-btn {
-  position: fixed;
-  bottom: 26px;
-  right: 26px;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: var(--siga-green-primary);
-  border: 2.5px solid #FFFFFF;
-  color: #FFFFFF;
-  box-shadow: var(--shadow-fab);
+.cultivo-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.6rem;
+}
+
+.bg-engorde { background-color: #E8F5E9; border: 1px solid #A5D6A7; }
+.bg-ponedoras { background-color: #FFF8E1; border: 1px solid #FFE082; }
+.bg-pesaje { background-color: #E3F2FD; border: 1px solid #90CAF9; }
+.bg-podio { background-color: #FFF3E0; border: 1px solid #FFCC80; }
+.bg-buzon { background-color: #ECEFF1; border: 1px solid #CFD8DC; }
+.bg-reportes { background-color: #FCE4EC; border: 1px solid #F8BBD0; }
+
+.cultivo-text-box h3 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #263238;
+  margin-bottom: 2px;
+}
+
+.cultivo-text-box p {
+  font-size: 0.75rem;
+  color: #78909C;
+  font-weight: 500;
+}
+
+/* ============================================================================
+   6. FORMULARIOS TÁCTILES Y BOTONES DE INCREMENTO RÁPIDO
+   ============================================================================ */
+.tactile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.banner-parametros-agronomicos {
+  background-color: #E8F5E9;
+  border: 1.5px solid #81C784;
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: #2E7D32;
+  margin-bottom: 14px;
+}
+
+.banner-check-circle {
+  background-color: #2E7D32;
+  color: #FFFFFF;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.form-row-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.form-field-card {
+  background: #FFFFFF;
+  border: 1.2px solid #C5E1A5;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field-card label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #558B2F;
+  letter-spacing: 0.5px;
+}
+
+.tactile-input, .tactile-select {
+  border: 1.5px solid #E0E0E0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  color: #263238;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.tactile-input:focus, .tactile-select:focus {
+  border-color: #689F38;
+}
+
+.tactile-counter-card {
+  background-color: #FFFFFF;
+  border: 1.5px solid #81C784;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.counter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.counter-header label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #2E7D32;
+}
+
+.counter-val {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #1B5E20;
+}
+
+.counter-buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn-step {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 800;
   cursor: pointer;
-  z-index: 150;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  transition: transform 0.1s ease;
 }
 
-.fab-action-btn:hover {
-  transform: scale(1.08) rotate(90deg);
-  background: var(--siga-green-dark);
-  box-shadow: 0 8px 24px rgba(51, 105, 30, 0.5);
-}
-
-.fab-action-btn:active {
+.btn-step:active {
   transform: scale(0.95);
 }
 
-/* =========================================================
-   MARCA DE AGUA SUTIL (FIRMA WATERMARK)
-   ========================================================= */
-.firma-watermark-web {
-  position: fixed;
-  bottom: 12px;
-  left: 14px;
-  opacity: 0.24;
-  pointer-events: none;
-  z-index: 95;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-family: var(--font-display);
+.btn-minus { background-color: #FFEBEE; color: #C62828; }
+.btn-plus { background-color: #E8F5E9; color: #2E7D32; }
+.btn-quick { background-color: #DCEDC8; color: #33691E; }
+
+.btn-guardar-principal {
+  background-color: #689F38;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 1rem;
   font-weight: 800;
-  font-size: 0.72rem;
-  color: var(--siga-green-dark);
-  letter-spacing: 0.5px;
-  user-select: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(104, 159, 56, 0.3);
+  transition: background-color 0.15s ease;
+  margin-top: 8px;
 }
 
-.firma-watermark-badge {
-  width: 22px;
-  height: 22px;
-  border-radius: 5px;
-  background: var(--siga-green-primary);
-  color: #FFFFFF;
+.btn-guardar-principal:hover {
+  background-color: #558B2F;
+}
+
+/* ============================================================================
+   7. CANASTAS Y POSTURA DE HUEVOS
+   ============================================================================ */
+.banner-postura-vivo {
+  background-color: #FFFDE7;
+  border: 1.5px solid #FFF59D;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 14px;
+}
+
+.postura-kpi-col {
+  text-align: center;
+}
+
+.kpi-lbl {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #78909C;
+  display: block;
+}
+
+.kpi-num {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #2E7D32;
+}
+
+.kpi-num.color-gold {
+  color: #E65100;
+}
+
+.canastas-box {
+  background-color: #FFFFFF;
+  border: 1.5px solid #FFD54F;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 8px;
+}
+
+.canastas-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #F57F17;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.btn-canasta {
+  background-color: #FFF8E1;
+  border: 1.5px solid #FFE082;
+  color: #E65100;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn-canasta.btn-clear {
+  background-color: #ECEFF1;
+  border-color: #CFD8DC;
+  color: #546E7A;
+}
+
+.calibres-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.calibre-card {
+  background-color: #FFFFFF;
+  border: 1.2px solid #C5E1A5;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.calibre-card label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #558B2F;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.calibre-card.color-danger {
+  border-color: #FFCDD2;
+}
+
+.calibre-card.color-danger label {
+  color: #C62828;
+}
+
+/* ============================================================================
+   8. PODIO Y ADMIN PANELS
+   ============================================================================ */
+.podio-banner {
+  background-color: #FFF8E1;
+  border: 1.5px solid #FFE082;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.podio-banner h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #E65100;
+  margin-bottom: 2px;
+}
+
+.podio-banner p {
+  font-size: 0.8rem;
+  color: #795548;
+}
+
+.podio-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.podio-card {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1.5px solid #E0E0E0;
+}
+
+.podio-card.gold { border-color: #FFD54F; box-shadow: 0 4px 10px rgba(255, 193, 7, 0.2); }
+.podio-card.silver { border-color: #CFD8DC; }
+.podio-card.bronze { border-color: #FFCCBC; }
+
+.podio-medal {
+  font-size: 2.2rem;
+}
+
+.podio-info h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #263238;
+}
+
+.podio-badges-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.badge-mini {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.badge-iep { background-color: #E8F5E9; color: #2E7D32; }
+.badge-ca { background-color: #E3F2FD; color: #1565C0; }
+
+.admin-kpi-summary {
+  background-color: #FFFFFF;
+  border: 1.5px solid #DCEDC8;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 12px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.mini-lbl { font-size: 0.75rem; color: #78909C; font-weight: 700; display: block; }
+.mini-val { font-size: 1.25rem; font-weight: 900; color: #2E7D32; }
+
+.admin-options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-menu-row {
+  background-color: #FFFFFF;
+  border: 1.5px solid #DCEDC8;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.admin-menu-row:hover {
+  border-color: #689F38;
+  transform: translateX(4px);
+}
+
+.menu-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 900;
+  font-size: 1.4rem;
 }
 
+.bg-pdf { background-color: #FFEBEE; }
+.bg-server { background-color: #E8F5E9; }
+.bg-backup { background-color: #E0F2F1; }
 
+.menu-text-col { flex: 1; }
+.menu-text-col h4 { font-size: 0.95rem; font-weight: 800; color: #263238; }
+.menu-text-col p { font-size: 0.78rem; color: #78909C; }
+.menu-arrow { font-size: 1.1rem; color: #9E9E9E; }
+
+/* ============================================================================
+   9. MARCA DE AGUA CORPORATIVA (24% OPACIDAD)
+   ============================================================================ */
+.firma-watermark-web {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 10;
+  color: #33691E;
+}
+
+/* ============================================================================
+   10. TOAST NOTIFICATIONS
+   ============================================================================ */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.toast {
+  background-color: #263238;
+  color: #FFFFFF;
+  border-radius: 24px;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: toastFadeIn 0.25s ease-out;
+}
+
+.toast.success { background-color: #2E7D32; }
+.toast.error { background-color: #C62828; }
+.toast.warning { background-color: #E65100; }
+
+@keyframes toastFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
