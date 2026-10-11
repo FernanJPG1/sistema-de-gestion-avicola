@@ -1,4 +1,4 @@
-﻿# Dependencies
+# Dependencies
 node_modules/
 
 # Production build
@@ -20,3 +20,18 @@ yarn-error.log*
 Thumbs.db
 .vscode/
 .idea/
+
+# Python & Backend
+__pycache__/
+*.py[cod]
+*$py.class
+*.db
+backend/logs/
+backend/backups/
+
+# Flutter / Mobile
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+app_movil/build/
+

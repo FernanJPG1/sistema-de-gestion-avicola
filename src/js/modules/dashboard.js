@@ -169,12 +169,60 @@ export function renderDashboard(container) {
       </div>
     </div>
 
+    <!-- CUADRO DE HONOR Y PODIO DE RENDIMIENTO (ESTÉTICA SIEMBRAS) -->
+    <div class="card-panel" style="margin-bottom: 24px; border: 1.5px solid var(--siga-green-border); background: var(--bg-card);">
+      <div class="panel-header" style="margin-bottom: 16px;">
+        <div>
+          <h3 class="panel-title" style="color: var(--siga-green-dark); display: flex; align-items: center; gap: 8px;">
+            <span>🏆</span> Podio de Rendimiento Zootécnico &mdash; Ranking de Galpones
+          </h3>
+          <p class="panel-subtitle">Medición de productividad en tiempo real por conversión alimenticia (CA), IEP y tasa de postura</p>
+        </div>
+        <span class="badge badge-success">Evaluación Oficial 2026</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;">
+        <!-- Medalla de Oro -->
+        <div style="background: linear-gradient(180deg, #FFFDE7 0%, #FFFFFF 100%); border: 1.5px solid #FFE082; border-radius: var(--radius-md); padding: 14px; text-align: center; box-shadow: 0 4px 12px rgba(255, 160, 0, 0.12);">
+          <div style="font-size: 2rem; margin-bottom: 4px;">🥇</div>
+          <span class="badge" style="background:#FFA000; color:white; font-size:0.75rem; margin-bottom: 6px;">1er Lugar • ORO</span>
+          <h4 style="font-size: 1.1rem; font-weight: 800; color: #E65100; margin-bottom: 2px;">Galpón 01 (Túnel)</h4>
+          <p style="font-size: 0.8rem; color: #6D4C41; font-weight: 600; margin-bottom: 8px;">Lote Cobb 500 &bull; Día 32</p>
+          <div style="background: rgba(255, 160, 0, 0.1); padding: 8px; border-radius: var(--radius-xs); font-size: 0.85rem; font-weight: 800; color: #BF360C;">
+            IEP 374 &bull; CA 1.52 &bull; Viab. 97.9%
+          </div>
+        </div>
+
+        <!-- Medalla de Plata -->
+        <div style="background: linear-gradient(180deg, #ECEFF1 0%, #FFFFFF 100%); border: 1.5px solid #CFD8DC; border-radius: var(--radius-md); padding: 14px; text-align: center; box-shadow: 0 4px 12px rgba(120, 144, 156, 0.12);">
+          <div style="font-size: 2rem; margin-bottom: 4px;">🥈</div>
+          <span class="badge" style="background:#78909C; color:white; font-size:0.75rem; margin-bottom: 6px;">2do Lugar • PLATA</span>
+          <h4 style="font-size: 1.1rem; font-weight: 800; color: #37474F; margin-bottom: 2px;">Galpón 04 (Postura)</h4>
+          <p style="font-size: 0.8rem; color: #546E7A; font-weight: 600; margin-bottom: 8px;">Lote Lohmann Brown &bull; Sem 44</p>
+          <div style="background: rgba(120, 144, 156, 0.1); padding: 8px; border-radius: var(--radius-xs); font-size: 0.85rem; font-weight: 800; color: #263238;">
+            Postura 94.6% &bull; Haugh 88.5 HU
+          </div>
+        </div>
+
+        <!-- Medalla de Bronce -->
+        <div style="background: linear-gradient(180deg, #EFEBE9 0%, #FFFFFF 100%); border: 1.5px solid #D7CCC8; border-radius: var(--radius-md); padding: 14px; text-align: center; box-shadow: 0 4px 12px rgba(141, 110, 99, 0.12);">
+          <div style="font-size: 2rem; margin-bottom: 4px;">🥉</div>
+          <span class="badge" style="background:#8D6E63; color:white; font-size:0.75rem; margin-bottom: 6px;">3er Lugar • BRONCE</span>
+          <h4 style="font-size: 1.1rem; font-weight: 800; color: #4E342E; margin-bottom: 2px;">Galpón 03 (Dark House)</h4>
+          <p style="font-size: 0.8rem; color: #5D4037; font-weight: 600; margin-bottom: 8px;">Lote Cobb 500 &bull; Día 19</p>
+          <div style="background: rgba(141, 110, 99, 0.1); padding: 8px; border-radius: var(--radius-xs); font-size: 0.85rem; font-weight: 800; color: #3E2723;">
+            IEP 368 &bull; Uniformidad 86.5%
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- TABLA DINÁMICA DE ESTADO OPERATIVO DE GALPONES -->
     <div class="card-panel">
       <div class="panel-header">
         <div>
-          <h3 class="panel-title">Supervisión Integral de Galpones &mdash; ${state.currentFarm.name}</h3>
-          <p class="panel-subtitle">Estado operacional en tiempo real: engorde, postura y descansos sanitarios ICA</p>
+          <h3 class="panel-title" style="color: var(--siga-green-dark);">Supervisión Integral de Galpones &mdash; ${state.currentFarm.name}</h3>
+          <p class="panel-subtitle">Control operacional en tiempo real: engorde, postura y descansos sanitarios ICA</p>
         </div>
         <div class="panel-actions">
           <button class="btn btn-primary btn-sm" id="btn-nuevo-lote-dash">${icons.plus(14)} Ingresar Lote</button>
@@ -193,7 +241,9 @@ export function renderDashboard(container) {
               <th>Población</th>
               <th>Indicador Clave</th>
               <th>Estado Sanitario</th>
-              <th>Acción Rápida</th>
+              <th>Sync</th>
+              <th>Seguridad (48h)</th>
+              <th>Acción</th>
             </tr>
           </thead>
           <tbody>
@@ -216,7 +266,22 @@ export function renderDashboard(container) {
                           : `<span class="badge badge-success">${icons.check(12)} Apto Sacrificio</span>`}
                       </td>
                       <td>
-                        <button class="btn btn-secondary btn-sm btn-nav-lote" data-nav="#engorde" data-lote="${eng.id}">Gestionar</button>
+                        <span class="badge-sync-ok" title="Sincronizado con base de datos local y central">
+                          ${icons.check(15)}
+                        </span>
+                      </td>
+                      <td>
+                        <span style="color: #FFA000; cursor: help;" title="Bloqueado por Inmutabilidad (> 2 días) - Solo modificable en Servidor Central">
+                          ${icons.lock(15)}
+                        </span>
+                      </td>
+                      <td>
+                        <div style="display:flex; gap:6px; justify-content:center;">
+                          <button class="btn-action-finalizar btn-finalizar-ciclo" data-lote="${eng.id}" data-tipo="engorde" title="Finalizar ciclo del lote">
+                            ✓ Finalizar
+                          </button>
+                          <button class="btn btn-secondary btn-sm btn-nav-lote" data-nav="#engorde" data-lote="${eng.id}">Ver</button>
+                        </div>
                       </td>
                     </tr>
                   `;
@@ -235,7 +300,22 @@ export function renderDashboard(container) {
                       <td><span class="badge badge-warning">${pon.posturaPct}% Postura</span></td>
                       <td><span class="badge badge-success">${icons.check(12)} Apto Comercial</span></td>
                       <td>
-                        <button class="btn btn-secondary btn-sm btn-nav-lote" data-nav="#ponedoras" data-lote="${pon.id}">Gestionar</button>
+                        <span class="badge-sync-ok" title="Sincronizado con base de datos">
+                          ${icons.check(15)}
+                        </span>
+                      </td>
+                      <td>
+                        <span style="color: #FFA000; cursor: help;" title="Bloqueado por Inmutabilidad (> 2 días) - Solo modificable en Servidor Central">
+                          ${icons.lock(15)}
+                        </span>
+                      </td>
+                      <td>
+                        <div style="display:flex; gap:6px; justify-content:center;">
+                          <button class="btn-action-finalizar btn-finalizar-ciclo" data-lote="${pon.id}" data-tipo="ponedora" title="Finalizar ciclo">
+                            ✓ Finalizar
+                          </button>
+                          <button class="btn btn-secondary btn-sm btn-nav-lote" data-nav="#ponedoras" data-lote="${pon.id}">Ver</button>
+                        </div>
                       </td>
                     </tr>
                   `;
@@ -248,7 +328,7 @@ export function renderDashboard(container) {
                 const salmonellaOk = vacio && vacio.etapas.some(e => e.estado === 'negativo_aprobado');
 
                 return `
-                  <tr style="background: rgba(212, 163, 89, 0.04);">
+                  <tr style="background: rgba(255, 160, 0, 0.04);">
                     <td><strong>${g.codigo}</strong></td>
                     <td>${formatearTipoTecnologia(g.tipo)}</td>
                     <td><em style="color:var(--siga-gold-primary);">En Vacío Sanitario</em></td>
@@ -261,6 +341,8 @@ export function renderDashboard(container) {
                         ? `<span class="badge badge-info">Microbiología Negativo</span>` 
                         : `<span class="badge badge-warning">En Desinfección</span>`}
                     </td>
+                    <td><span class="badge-sync-ok">${icons.check(15)}</span></td>
+                    <td><span style="color: #90A4AE;">&mdash;</span></td>
                     <td>
                       <button class="btn btn-secondary btn-sm btn-nav-lote" data-nav="#bioseguridad">Checklist ICA</button>
                     </td>
@@ -270,15 +352,17 @@ export function renderDashboard(container) {
 
               // Disponible
               return `
-                <tr style="background: rgba(34, 197, 94, 0.04);">
+                <tr style="background: rgba(124, 179, 66, 0.04);">
                   <td><strong>${g.codigo}</strong></td>
                   <td>${formatearTipoTecnologia(g.tipo)}</td>
-                  <td><span style="color:#15803D; font-weight:700;">Galpón Listo</span></td>
+                  <td><span style="color:var(--siga-green-dark); font-weight:700;">Galpón Listo</span></td>
                   <td>&mdash;</td>
                   <td>Desinfectado</td>
                   <td>0 aves</td>
                   <td><span class="badge badge-success">Apto para Carga</span></td>
                   <td><span class="badge badge-success">${icons.check(12)} Sanidad OK</span></td>
+                  <td><span class="badge-sync-ok">${icons.check(15)}</span></td>
+                  <td><span style="color: #90A4AE;">&mdash;</span></td>
                   <td>
                     <button class="btn btn-primary btn-sm btn-asignar-galpon" data-galpon="${g.id}">Asignar Lote</button>
                   </td>
@@ -347,6 +431,26 @@ export function renderDashboard(container) {
   document.querySelectorAll('.btn-asignar-galpon').forEach(btn => {
     btn.addEventListener('click', () => {
       abrirModalIngresarLote(btn.dataset.galpon);
+    });
+  });
+
+  document.querySelectorAll('.btn-finalizar-ciclo').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const loteId = btn.dataset.lote;
+      const tipo = btn.dataset.tipo;
+      if (confirm(`¿Confirmas la finalización de ciclo del lote ${loteId}? El galpón quedará libre y pasará a descanso sanitario ICA.`)) {
+        try {
+          if (tipo === 'engorde') {
+            store.finalizarLoteSaca(loteId);
+          } else {
+            store.finalizarLotePonedoras(loteId);
+          }
+          window.showToast(`✓ Ciclo de ${loteId} finalizado. Galpón puesto en descanso sanitario.`, 'success');
+          renderDashboard(container);
+        } catch (e) {
+          window.showToast(e.message, 'error');
+        }
+      }
     });
   });
 

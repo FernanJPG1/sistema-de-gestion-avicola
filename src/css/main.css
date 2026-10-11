@@ -800,62 +800,104 @@ canvas {
 
 .siga-table th {
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 800;
-  color: var(--text-muted);
+  color: var(--siga-green-dark);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.02);
-  border-bottom: 1px solid var(--border-subtle);
+  letter-spacing: 0.5px;
+  padding: 13px 16px;
+  background: var(--siga-green-soft);
+  border-bottom: 2px solid var(--siga-green-border);
   white-space: nowrap;
+  text-align: center;
 }
 
 .siga-table td {
-  padding: 14px 18px;
+  padding: 13px 16px;
   border-bottom: 1px solid var(--border-divider);
   font-size: 0.88rem;
   color: var(--text-main);
   vertical-align: middle;
+  text-align: center;
   transition: background 0.15s ease;
 }
 
 .siga-table tbody tr:hover td {
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(124, 179, 66, 0.04);
 }
 
 .siga-table tbody tr:last-child td {
   border-bottom: none;
 }
 
-/* Badges */
+/* Badges con estética Siembras */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 5px;
   padding: 4px 10px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-xs);
   font-size: 0.72rem;
   font-weight: 700;
   white-space: nowrap;
 }
 
 .badge-success {
-  background: rgba(16, 185, 129, 0.14);
-  color: #34D399;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: var(--siga-green-badge);
+  color: var(--siga-green-dark);
+  border: 1px solid var(--siga-green-border);
 }
 
 .badge-warning {
-  background: rgba(245, 158, 11, 0.14);
-  color: #FBBF24;
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: var(--siga-gold-soft);
+  color: var(--siga-gold-dark);
+  border: 1px solid var(--siga-gold-border);
 }
 
 .badge-danger {
-  background: rgba(244, 63, 94, 0.14);
-  color: #FB7185;
-  border: 1px solid rgba(244, 63, 94, 0.3);
+  background: var(--siga-terracotta-soft);
+  color: var(--siga-terracotta);
+  border: 1px solid var(--siga-terracotta-border);
+}
+
+.badge-cerrado {
+  background: #ECEFF1;
+  color: #546E7A;
+  border: 1px solid #CFD8DC;
+  font-style: italic;
+}
+
+.badge-sync-ok {
+  color: var(--siga-green-primary);
+  display: inline-flex;
+  align-items: center;
+}
+
+.badge-sync-pending {
+  color: var(--siga-gold-primary);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Botón Finalizar Ciclo estilo Siembras */
+.btn-action-finalizar {
+  background: var(--siga-green-primary);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-xs);
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: var(--transition-smooth);
+}
+
+.btn-action-finalizar:hover {
+  background: var(--siga-green-dark);
+  transform: translateY(-1px);
 }
 
 .badge-info {
@@ -1179,6 +1221,73 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .card-panel-selected {
   border-color: var(--siga-green-primary) !important;
-  box-shadow: 0 0 24px rgba(16, 185, 129, 0.25), var(--shadow-card) !important;
+  box-shadow: 0 0 24px rgba(124, 179, 66, 0.25), var(--shadow-card) !important;
 }
+
+/* =========================================================
+   BOTÓN FLOTANTE (+) IDÉNTICO A PROYECTO SIEMBRAS
+   ========================================================= */
+.fab-action-btn {
+  position: fixed;
+  bottom: 26px;
+  right: 26px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--siga-green-primary);
+  border: 2.5px solid #FFFFFF;
+  color: #FFFFFF;
+  box-shadow: var(--shadow-fab);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 150;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.fab-action-btn:hover {
+  transform: scale(1.08) rotate(90deg);
+  background: var(--siga-green-dark);
+  box-shadow: 0 8px 24px rgba(51, 105, 30, 0.5);
+}
+
+.fab-action-btn:active {
+  transform: scale(0.95);
+}
+
+/* =========================================================
+   MARCA DE AGUA SUTIL (FIRMA WATERMARK)
+   ========================================================= */
+.firma-watermark-web {
+  position: fixed;
+  bottom: 12px;
+  left: 14px;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.72rem;
+  color: var(--siga-green-dark);
+  letter-spacing: 0.5px;
+  user-select: none;
+}
+
+.firma-watermark-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: var(--siga-green-primary);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
 

@@ -1,152 +1,131 @@
 :root {
   /* =========================================================
-     SIGA ENTERPRISE - HYPER-MODERN AGRI-TECH DESIGN SYSTEM
-     Ultra-Premium Executive Aesthetics (Default: Cyber-Obsidian Pro)
+     SIGA ENTERPRISE - DISEÑO AGRONÓMICO PROFESIONAL
+     Alineado 100% con la estética del Proyecto Siembras
      ========================================================= */
-  
-  /* Brand Palette: High-Tech Emerald & Solar Amber */
-  --siga-green-primary: #10B981;
-  --siga-green-dark: #059669;
-  --siga-green-light: #34D399;
-  --siga-green-neon: #6EE7B7;
-  --siga-green-soft: rgba(16, 185, 129, 0.12);
-  --siga-green-border: rgba(16, 185, 129, 0.28);
-  --siga-green-glow: 0 0 24px rgba(16, 185, 129, 0.28);
 
-  --siga-gold-primary: #F59E0B;
-  --siga-gold-dark: #D97706;
-  --siga-gold-light: #FBBF24;
-  --siga-gold-soft: rgba(245, 158, 11, 0.12);
-  --siga-gold-border: rgba(245, 158, 11, 0.32);
-  --siga-gold-glow: 0 0 24px rgba(245, 158, 11, 0.28);
+  /* Paleta Primaria: Verde Follaje & Tierra Fértil */
+  --siga-green-primary: #7CB342;       /* Verde Agronómico Primario Siembras */
+  --siga-green-dark: #33691E;          /* Verde Oliva Profundo para Títulos */
+  --siga-green-medium: #558B2F;        /* Verde Intermedio para Botones */
+  --siga-green-light: #8BC34A;         /* Verde Claro de Acento */
+  --siga-green-soft: #F1F8E9;          /* Fondo Suave Verde Pastel */
+  --siga-green-badge: #DCEDC8;         /* Fondo de Badges Activos */
+  --siga-green-border: #C5E1A5;        /* Borde Agronómico */
+  --siga-green-glow: 0 4px 14px rgba(124, 179, 66, 0.28);
 
-  --siga-cyan-primary: #06B6D4;
-  --siga-cyan-soft: rgba(6, 182, 212, 0.12);
-  --siga-cyan-border: rgba(6, 182, 212, 0.3);
+  /* Acentos de Alerta & Trazabilidad */
+  --siga-gold-primary: #FFA000;        /* Ámbar Candado & Alerta */
+  --siga-gold-dark: #F57F17;           /* Ámbar Oscuro */
+  --siga-gold-soft: #FFF8E1;           /* Fondo Ámbar Suave */
+  --siga-gold-border: #FFE082;         /* Borde Ámbar */
 
-  --siga-terracotta: #F43F5E;
-  --siga-terracotta-soft: rgba(244, 63, 94, 0.12);
-  --siga-terracotta-border: rgba(244, 63, 94, 0.3);
-  --siga-terracotta-glow: 0 0 20px rgba(244, 63, 94, 0.25);
+  --siga-terracotta: #D32F2F;          /* Rojo Sanitario / Mortalidad */
+  --siga-terracotta-soft: #FFEBEE;     /* Fondo Rojo Suave */
+  --siga-terracotta-border: #FFCDD2;
 
-  --siga-blue-telemetry: #3B82F6;
-  --siga-blue-soft: rgba(59, 130, 246, 0.12);
-  --siga-blue-border: rgba(59, 130, 246, 0.3);
+  --siga-blue-telemetry: #1976D2;      /* Azul Agua y Caudal */
+  --siga-blue-soft: #E3F2FD;
+  --siga-blue-border: #BBDEFB;
 
-  /* Deep Space Obsidian Base Theme (Default WOW Dark Mode) */
-  --bg-app: #080C11;
-  --bg-app-gradient: radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.07) 0%, transparent 40%),
-                     radial-gradient(circle at 85% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
-                     radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.03) 0%, transparent 60%),
-                     #080C11;
+  /* Superficies y Fondos Base (Estética Siembras: Limpio, Luminoso y Legible en Campo) */
+  --bg-app: #F9FBE7;                   /* Tono Follaje Suave de Fondo */
+  --bg-app-gradient: linear-gradient(180deg, #F9FBE7 0%, #F1F8E9 100%);
 
-  --bg-sidebar: rgba(11, 17, 25, 0.94);
-  --bg-sidebar-hover: rgba(255, 255, 255, 0.04);
-  --bg-sidebar-active: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.05));
-  --text-sidebar: #94A3B8;
-  --text-sidebar-active: #FFFFFF;
-  --border-sidebar: rgba(255, 255, 255, 0.07);
+  --bg-sidebar: #FFFFFF;
+  --bg-sidebar-hover: #F1F8E9;
+  --bg-sidebar-active: #DCEDC8;
+  --text-sidebar: #546E7A;
+  --text-sidebar-active: #33691E;
+  --border-sidebar: #E0E0E0;
 
-  --bg-topbar: rgba(11, 17, 25, 0.82);
-  --bg-card: rgba(15, 23, 36, 0.72);
-  --bg-card-hover: rgba(22, 33, 50, 0.85);
-  --bg-surface: rgba(22, 32, 48, 0.6);
-  --bg-input: rgba(11, 17, 25, 0.8);
-  --bg-glass: rgba(15, 23, 36, 0.65);
+  --bg-topbar: rgba(255, 255, 255, 0.96);
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #FCFDF9;
+  --bg-surface: #F1F8E9;
+  --bg-input: #FFFFFF;
+  --bg-glass: rgba(255, 255, 255, 0.9);
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-focus: #10B981;
-  --border-divider: rgba(255, 255, 255, 0.05);
+  --border-subtle: #E0E0E0;
+  --border-card: #C5E1A5;
+  --border-focus: #7CB342;
+  --border-divider: #EEEEEE;
 
-  --text-main: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
-  --text-inverse: #080C11;
+  --text-main: #263238;                /* Gris Carbón Alta Legibilidad */
+  --text-secondary: #546E7A;           /* Gris Pizarra */
+  --text-muted: #78909C;               /* Gris Medio */
+  --text-inverse: #FFFFFF;
 
-  /* Typography */
-  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Tipografía */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Consolas', monospace;
 
-  /* Layout Dimensions */
-  --sidebar-width: 270px;
-  --topbar-height: 72px;
+  /* Dimensiones */
+  --sidebar-width: 260px;
+  --topbar-height: 68px;
 
-  /* Radii */
+  /* Radios redondeados suaves estilo Material 3 / Siembras */
   --radius-xs: 6px;
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 18px;
-  --radius-xl: 24px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
   --radius-pill: 9999px;
 
-  /* Elevation & Glow Shadows */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-  --shadow-card: 0 8px 24px -4px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-subtle);
-  --shadow-card-hover: 0 16px 36px -6px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(16, 185, 129, 0.35), var(--siga-green-glow);
-  --shadow-dropdown: 0 20px 40px -8px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  /* Sombras Material Design */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(197, 225, 165, 0.6);
+  --shadow-card-hover: 0 6px 18px rgba(51, 105, 30, 0.12), 0 0 0 1px #7CB342;
+  --shadow-dropdown: 0 10px 24px -4px rgba(0, 0, 0, 0.12);
+  --shadow-fab: 0 4px 12px rgba(124, 179, 66, 0.45);
 
-  /* Transitions */
-  --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-spring: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Transiciones */
+  --transition-smooth: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* =========================================================
-   APPLE STUDIO PRO - LIGHT MODE ALTERNATIVE
+   MODO OSCURO ALTERNATIVO (NOCTURNO DE GALPÓN)
    ========================================================= */
-[data-theme="light"] {
-  --siga-green-primary: #059669;
-  --siga-green-dark: #047857;
-  --siga-green-light: #10B981;
-  --siga-green-soft: #ECFDF5;
-  --siga-green-border: #A7F3D0;
-  --siga-green-glow: 0 0 20px rgba(5, 150, 105, 0.2);
+[data-theme="dark"] {
+  --siga-green-primary: #7CB342;
+  --siga-green-dark: #AEEA00;
+  --siga-green-medium: #8BC34A;
+  --siga-green-light: #C5E1A5;
+  --siga-green-soft: rgba(124, 179, 66, 0.15);
+  --siga-green-badge: rgba(124, 179, 66, 0.22);
+  --siga-green-border: rgba(124, 179, 66, 0.35);
 
-  --siga-gold-primary: #D97706;
-  --siga-gold-dark: #B45309;
-  --siga-gold-light: #F59E0B;
-  --siga-gold-soft: #FFFBEB;
-  --siga-gold-border: #FDE68A;
-  --siga-gold-glow: 0 0 20px rgba(217, 119, 6, 0.2);
+  --bg-app: #121A11;
+  --bg-app-gradient: linear-gradient(180deg, #121A11 0%, #0D130C 100%);
 
-  --siga-terracotta: #E11D48;
-  --siga-terracotta-soft: #FFF1F2;
-  --siga-terracotta-border: #FECDD3;
-
-  --siga-blue-telemetry: #2563EB;
-  --siga-blue-soft: #EFF6FF;
-  --siga-blue-border: #BFDBFE;
-
-  --bg-app: #F8FAFC;
-  --bg-app-gradient: radial-gradient(circle at 10% 10%, rgba(5, 150, 105, 0.05) 0%, transparent 40%),
-                     radial-gradient(circle at 90% 90%, rgba(217, 119, 6, 0.04) 0%, transparent 40%),
-                     #F8FAFC;
-
-  --bg-sidebar: #0F172A;
-  --bg-sidebar-hover: rgba(255, 255, 255, 0.06);
-  --bg-sidebar-active: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(16, 185, 129, 0.08));
-  --text-sidebar: #94A3B8;
+  --bg-sidebar: #172216;
+  --bg-sidebar-hover: rgba(255, 255, 255, 0.05);
+  --bg-sidebar-active: rgba(124, 179, 66, 0.2);
+  --text-sidebar: #90A4AE;
   --text-sidebar-active: #FFFFFF;
-  --border-sidebar: #1E293B;
+  --border-sidebar: #223320;
 
-  --bg-topbar: rgba(255, 255, 255, 0.88);
-  --bg-card: #FFFFFF;
-  --bg-card-hover: #F8FAFC;
-  --bg-surface: #F1F5F9;
-  --bg-input: #FFFFFF;
-  --bg-glass: rgba(255, 255, 255, 0.8);
+  --bg-topbar: rgba(23, 34, 22, 0.95);
+  --bg-card: #1B291A;
+  --bg-card-hover: #223521;
+  --bg-surface: #20311F;
+  --bg-input: #172216;
+  --bg-glass: rgba(27, 41, 26, 0.85);
 
-  --border-subtle: #E2E8F0;
-  --border-focus: #059669;
-  --border-divider: #F1F5F9;
+  --border-subtle: #293E28;
+  --border-card: #345232;
+  --border-focus: #7CB342;
+  --border-divider: #243722;
 
-  --text-main: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #64748B;
-  --text-inverse: #FFFFFF;
+  --text-main: #ECEFF1;
+  --text-secondary: #B0BEC5;
+  --text-muted: #78909C;
+  --text-inverse: #121A11;
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-card: 0 4px 12px -2px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.8);
-  --shadow-card-hover: 0 12px 28px -4px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(5, 150, 105, 0.3);
-  --shadow-dropdown: 0 16px 36px -6px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 3px 10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(124, 179, 66, 0.2);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 0 1px #7CB342;
+  --shadow-dropdown: 0 12px 30px rgba(0, 0, 0, 0.6);
 }

@@ -249,7 +249,7 @@ function inicializarIconos() {
 }
 
 function inicializarTema() {
-  const temaGuardado = localStorage.getItem('siga_theme') || 'dark';
+  const temaGuardado = localStorage.getItem('siga_theme') || 'light';
   aplicarTema(temaGuardado);
 
   document.getElementById('btn-theme-toggle')?.addEventListener('click', () => {
@@ -265,19 +265,81 @@ function inicializarTema() {
     if (container && route) {
       route.render(container);
     }
-    window.showToast(`Modo ${nuevoTema === 'dark' ? 'Cyber-Obsidian Ejecutivo' : 'Studio Pro Claro'} activado`, 'info');
+    window.showToast(`Modo ${nuevoTema === 'dark' ? 'Nocturno de Galpón' : 'Agronómico Siembras'} activado`, 'info');
   });
 }
 
-function aplicarTema(tema) {
-  const toggleIcon = document.getElementById('theme-toggle-icon');
-  if (tema === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    if (toggleIcon) toggleIcon.innerHTML = icons.moon(16);
-  } else {
-    document.documentElement.removeAttribute('data-theme');
-    if (toggleIcon) toggleIcon.innerHTML = icons.sun(16);
-  }
+function abrirModalMenuRapido() {
+  const modal = document.getElementById('global-modal');
+  const title = document.getElementById('global-modal-title');
+  const body = document.getElementById('global-modal-body');
+  if (!modal || !title || !body) return;
+
+  title.textContent = 'Acción Rápida de Campo (SIGA)';
+  body.innerHTML = `
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 4px;">
+        Selecciona una acción operativa rápida para registrar en galpón:
+      </p>
+      
+      <button class="btn btn-primary" id="fab-opcion-campo" style="padding: 14px; text-align: left; display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 1.4rem;">📋</span>
+        <div>
+          <strong style="display:block;">Modo Campo Offline (Táctil)</strong>
+          <small style="opacity: 0.9;">Registrar mortalidad, bultos de comida y litros de agua</small>
+        </div>
+      </button>
+
+      <button class="btn btn-secondary" id="fab-opcion-pesaje" style="padding: 14px; text-align: left; display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 1.4rem;">⚖️</span>
+        <div>
+          <strong style="display:block;">Muestreo Biométrico de Pesaje</strong>
+          <small style="opacity: 0.9;">Muestreo de aves, uniformidad % y CV %</small>
+        </div>
+      </button>
+
+      <button class="btn btn-secondary" id="fab-opcion-huevos" style="padding: 14px; text-align: left; display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 1.4rem;">🥚</span>
+        <div>
+          <strong style="display:block;">Postura y Calidad del Huevo</strong>
+          <small style="opacity: 0.9;">Clasificación NTC 1240 (Jumbo, AAA, AA, A, B)</small>
+        </div>
+      </button>
+
+      <button class="btn btn-secondary" id="fab-opcion-sync" style="padding: 14px; text-align: left; display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 1.4rem;">🔄</span>
+        <div>
+          <strong style="display:block;">Sincronizar con Backend FastAPI</strong>
+          <small style="opacity: 0.9;">Descargar novedades y subir mutaciones al servidor central</small>
+        </div>
+      </button>
+    </div>
+  `;
+
+  modal.classList.add('active');
+
+  document.getElementById('fab-opcion-campo')?.addEventListener('click', () => {
+    modal.classList.remove('active');
+    window.location.hash = '#field-mode';
+  });
+
+  document.getElementById('fab-opcion-pesaje')?.addEventListener('click', () => {
+    modal.classList.remove('active');
+    window.location.hash = '#engorde';
+  });
+
+  document.getElementById('fab-opcion-huevos')?.addEventListener('click', () => {
+    modal.classList.remove('active');
+    window.location.hash = '#ponedoras';
+  });
+
+  document.getElementById('fab-opcion-sync')?.addEventListener('click', async () => {
+    modal.classList.remove('active');
+    window.showToast('Conectando con backend FastAPI (http://localhost:8000)...', 'info');
+    const res = await store.sincronizarConBackend();
+    window.showToast(res.message, res.success ? 'success' : 'warning');
+    navigate();
+  });
 }
 
 // Inicialización de Eventos y Modal Global
@@ -293,17 +355,18 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarUIEstado();
   });
 
+  // Botón Flotante (+) Rápido (Estética Siembras)
+  document.getElementById('btn-fab-add')?.addEventListener('click', () => {
+    abrirModalMenuRapido();
+  });
+
   // Botón Sincronización Topbar
-  document.getElementById('btn-sync-status')?.addEventListener('click', () => {
-    const queueCount = store.getState().colaSincronizacion.length;
-    if (queueCount === 0) {
-      window.showToast('Todos los datos están sincronizados al día con el servidor central.', 'success');
-    } else {
-      store.sincronizarColaOffline();
-      actualizarUIEstado();
-      window.showToast(`Sincronizados ${queueCount} registros locales con el servidor central.`, 'success');
-      navigate();
-    }
+  document.getElementById('btn-sync-status')?.addEventListener('click', async () => {
+    window.showToast('Conectando con servidor local FastAPI...', 'info');
+    const res = await store.sincronizarConBackend();
+    actualizarUIEstado();
+    window.showToast(res.message, res.success ? 'success' : 'warning');
+    navigate();
   });
 
   // Botón Modo Campo en Topbar
